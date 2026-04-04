@@ -80,10 +80,11 @@ verifier_model = None
 def get_model():
     global model
     if model is None:
-        if os.path.exists("model.h5"):
-            model = load_model("model.h5")
+        model_path = os.path.join(settings.BASE_DIR, 'model.h5')
+        if os.path.exists(model_path):
+            model = load_model(model_path)
         else:
-            raise FileNotFoundError("model.h5 not found")
+            raise FileNotFoundError(f"Model file not found at {model_path}")
     return model
 
 def get_verifier():

@@ -1,0 +1,3938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <title>ValueError
+          at /predict</title>
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; background-color:#fff; color:#000; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; }
+    h2 { margin-bottom:.8em; }
+    h3 { margin:1em 0 .5em 0; }
+    h4 { margin:0 0 .5em 0; font-weight: normal; }
+    code, pre { font-size: 100%; white-space: pre-wrap; word-break: break-word; }
+    summary { cursor: pointer; }
+    table { border:1px solid #ccc; border-collapse: collapse; width:100%; background:white; }
+    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
+    thead th {
+      padding:1px 6px 1px 3px; background:#fefefe; text-align:left;
+      font-weight:normal; font-size:11px; border:1px solid #ddd;
+    }
+    tbody th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    table.vars { margin:5px 10px 2px 40px; width: auto; }
+    table.vars td, table.req td { font-family:monospace; }
+    table td.code { width:100%; }
+    table td.code pre { overflow:hidden; }
+    table.source th { color:#666; }
+    table.source td { font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
+    ul.traceback { list-style-type:none; color: #222; }
+    ul.traceback li.cause { word-break: break-word; }
+    ul.traceback li.frame { padding-bottom:1em; color:#4f4f4f; }
+    ul.traceback li.user { background-color:#e0e0e0; color:#000 }
+    div.context { padding:10px 0; overflow:hidden; }
+    div.context ol { padding-left:30px; margin:0 10px; list-style-position: inside; }
+    div.context ol li { font-family:monospace; white-space:pre; color:#777; cursor:pointer; padding-left: 2px; }
+    div.context ol li pre { display:inline; }
+    div.context ol.context-line li { color:#464646; background-color:#dfdfdf; padding: 3px 2px; }
+    div.context ol.context-line li span { position:absolute; right:32px; }
+    .user div.context ol.context-line li { background-color:#bbb; color:#000; }
+    .user div.context ol li { color:#666; }
+    div.commands, summary.commands { margin-left: 40px; }
+    div.commands a, summary.commands { color:#555; text-decoration:none; }
+    .user div.commands a { color: black; }
+    #summary { background: #ffc; }
+    #summary h2 { font-weight: normal; color: #666; }
+    #explanation { background:#eee; }
+    #template, #template-not-exist { background:#f6f6f6; }
+    #template-not-exist ul { margin: 0 0 10px 20px; }
+    #template-not-exist .postmortem-section { margin-bottom: 3px; }
+    #unicode-hint { background:#eee; }
+    #traceback { background:#eee; }
+    #requestinfo { background:#f6f6f6; padding-left:120px; }
+    #summary table { border:none; background:transparent; }
+    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
+    #requestinfo h3 { margin-bottom:-1em; }
+    .error { background: #ffc; }
+    .specific { color:#cc3300; font-weight:bold; }
+    h2 span.commands { font-size:.7em; font-weight:normal; }
+    span.commands a:link {color:#5E5694;}
+    pre.exception_value { font-family: sans-serif; color: #575757; font-size: 1.5em; margin: 10px 0 10px 0; }
+    .append-bottom { margin-bottom: 10px; }
+    .fname { user-select: all; }
+  </style>
+  
+  <script>
+    function hideAll(elems) {
+      for (var e = 0; e < elems.length; e++) {
+        elems[e].style.display = 'none';
+      }
+    }
+    window.onload = function() {
+      hideAll(document.querySelectorAll('ol.pre-context'));
+      hideAll(document.querySelectorAll('ol.post-context'));
+      hideAll(document.querySelectorAll('div.pastebin'));
+    }
+    function toggle() {
+      for (var i = 0; i < arguments.length; i++) {
+        var e = document.getElementById(arguments[i]);
+        if (e) {
+          e.style.display = e.style.display == 'none' ? 'block': 'none';
+        }
+      }
+      return false;
+    }
+    function switchPastebinFriendly(link) {
+      s1 = "Switch to copy-and-paste view";
+      s2 = "Switch back to interactive view";
+      link.textContent = link.textContent.trim() == s1 ? s2: s1;
+      toggle('browserTraceback', 'pastebinTraceback');
+      return false;
+    }
+  </script>
+  
+</head>
+<body>
+<div id="summary">
+  <h1>ValueError
+       at /predict</h1>
+  <pre class="exception_value">Layer &#x27;block1_conv1&#x27; expected 2 variables, but received 0 variables during loading. Expected: [&#x27;block1_conv1/kernel:0&#x27;, &#x27;block1_conv1/bias:0&#x27;]</pre>
+  <table class="meta">
+
+    <tr>
+      <th>Request Method:</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Request URL:</th>
+      <td>https://lumpy-b7ix.onrender.com/predict</td>
+    </tr>
+
+    <tr>
+      <th>Django Version:</th>
+      <td>4.2.29</td>
+    </tr>
+
+    <tr>
+      <th>Exception Type:</th>
+      <td>ValueError</td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Value:</th>
+      <td><pre>Layer &#x27;block1_conv1&#x27; expected 2 variables, but received 0 variables during loading. Expected: [&#x27;block1_conv1/kernel:0&#x27;, &#x27;block1_conv1/bias:0&#x27;]</pre></td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Location:</th>
+      <td><span class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py</span>, line 3531, in load_own_variables</td>
+    </tr>
+
+
+    <tr>
+      <th>Raised during:</th>
+      <td>lsd_app.views.predict_api</td>
+    </tr>
+
+    <tr>
+      <th>Python Executable:</th>
+      <td>/opt/render/project/src/.venv/bin/python3.10</td>
+    </tr>
+    <tr>
+      <th>Python Version:</th>
+      <td>3.10.0</td>
+    </tr>
+    <tr>
+      <th>Python Path:</th>
+      <td><pre>[&#x27;/opt/render/project/src&#x27;,
+ &#x27;/opt/render/project/src/.venv/bin&#x27;,
+ &#x27;/opt/render/project/python/Python-3.10.0/lib/python310.zip&#x27;,
+ &#x27;/opt/render/project/python/Python-3.10.0/lib/python3.10&#x27;,
+ &#x27;/opt/render/project/python/Python-3.10.0/lib/python3.10/lib-dynload&#x27;,
+ &#x27;/opt/render/project/src/.venv/lib/python3.10/site-packages&#x27;]</pre></td>
+    </tr>
+    <tr>
+      <th>Server time:</th>
+      <td>Sat, 04 Apr 2026 15:24:27 +0000</td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div id="traceback">
+  <h2>Traceback <span class="commands"><a href="#" onclick="return switchPastebinFriendly(this);">
+    Switch to copy-and-paste view</a></span>
+  </h2>
+  <div id="browserTraceback">
+    <ul class="traceback">
+      
+        
+        <li class="frame django">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py</code>, line 55, in inner
+          
+
+          
+            <div class="context" id="c125417163857728">
+              
+                <ol start="48" class="pre-context" id="pre125417163857728">
+                
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>        return inner</pre></li>
+                
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>    else:</pre></li>
+                
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>        @wraps(get_response)</pre></li>
+                
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>        def inner(request):</pre></li>
+                
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>            try:</pre></li>
+                
+                </ol>
+              
+              <ol start="55" class="context-line">
+                <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>                response = get_response(request)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='56' class="post-context" id="post125417163857728">
+                  
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>            except Exception as exc:</pre></li>
+                  
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>                response = response_for_exception(request, exc)</pre></li>
+                  
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>            return response</pre></li>
+                  
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre>        return inner</pre></li>
+                  
+                  <li onclick="toggle('pre125417163857728', 'post125417163857728')"><pre></pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417163857728">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>exc</td>
+                    <td class="code"><pre>ValueError(&quot;Layer &#x27;block1_conv1&#x27; expected 2 variables, but received 0 variables during loading. Expected: [&#x27;block1_conv1/kernel:0&#x27;, &#x27;block1_conv1/bias:0&#x27;]&quot;)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>get_response</td>
+                    <td class="code"><pre>&lt;bound method BaseHandler._get_response of &lt;django.core.handlers.wsgi.WSGIHandler object at 0x7211711bd3c0&gt;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;WSGIRequest: POST &#x27;/predict&#x27;&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame django">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/django/core/handlers/base.py</code>, line 197, in _get_response
+          
+
+          
+            <div class="context" id="c125417164067328">
+              
+                <ol start="190" class="pre-context" id="pre125417164067328">
+                
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>        if response is None:</pre></li>
+                
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>            wrapped_callback = self.make_view_atomic(callback)</pre></li>
+                
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>            # If it is an asynchronous view, run it in a subthread.</pre></li>
+                
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>            if iscoroutinefunction(wrapped_callback):</pre></li>
+                
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>                wrapped_callback = async_to_sync(wrapped_callback)</pre></li>
+                
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>            try:</pre></li>
+                
+                </ol>
+              
+              <ol start="197" class="context-line">
+                <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='198' class="post-context" id="post125417164067328">
+                  
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>            except Exception as e:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>                response = self.process_exception_by_middleware(e, request)</pre></li>
+                  
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>                if response is None:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>                    raise</pre></li>
+                  
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164067328', 'post125417164067328')"><pre>        # Complain if the view returned None (a common error).</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164067328">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>callback</td>
+                    <td class="code"><pre>&lt;function View.as_view.&lt;locals&gt;.view at 0x7210f57a5b40&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback_args</td>
+                    <td class="code"><pre>()</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback_kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>middleware_method</td>
+                    <td class="code"><pre>&lt;bound method CsrfViewMiddleware.process_view of &lt;CsrfViewMiddleware get_response=convert_exception_to_response.&lt;locals&gt;.inner&gt;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;WSGIRequest: POST &#x27;/predict&#x27;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>response</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7211711bd3c0&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>wrapped_callback</td>
+                    <td class="code"><pre>&lt;function View.as_view.&lt;locals&gt;.view at 0x7210f57a5b40&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame django">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py</code>, line 56, in wrapper_view
+          
+
+          
+            <div class="context" id="c125417164071232">
+              
+                <ol start="49" class="pre-context" id="pre125417164071232">
+                
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>def csrf_exempt(view_func):</pre></li>
+                
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>    &quot;&quot;&quot;Mark a view function as being exempt from the CSRF view protection.&quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>    # view_func.csrf_exempt = True would also work, but decorators are nicer</pre></li>
+                
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>    # if they don&#x27;t have side effects, so return a new function.</pre></li>
+                
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>    @wraps(view_func)</pre></li>
+                
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>    def wrapper_view(*args, **kwargs):</pre></li>
+                
+                </ol>
+              
+              <ol start="56" class="context-line">
+                <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>        return view_func(*args, **kwargs)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='57' class="post-context" id="post125417164071232">
+                  
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>    wrapper_view.csrf_exempt = True</pre></li>
+                  
+                  <li onclick="toggle('pre125417164071232', 'post125417164071232')"><pre>    return wrapper_view</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164071232">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>args</td>
+                    <td class="code"><pre>(&lt;WSGIRequest: POST &#x27;/predict&#x27;&gt;,)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>view_func</td>
+                    <td class="code"><pre>&lt;function View.as_view.&lt;locals&gt;.view at 0x7210f57a5cf0&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame django">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/django/views/generic/base.py</code>, line 105, in view
+          
+
+          
+            <div class="context" id="c125417164075456">
+              
+                <ol start="98" class="pre-context" id="pre125417164075456">
+                
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>            self = cls(**initkwargs)</pre></li>
+                
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>            self.setup(request, *args, **kwargs)</pre></li>
+                
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>            if not hasattr(self, &quot;request&quot;):</pre></li>
+                
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>                raise AttributeError(</pre></li>
+                
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>                    &quot;%s instance has no &#x27;request&#x27; attribute. Did you override &quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>                    &quot;setup() and forget to call super()?&quot; % cls.__name__</pre></li>
+                
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>                )</pre></li>
+                
+                </ol>
+              
+              <ol start="105" class="context-line">
+                <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>            return self.dispatch(request, *args, **kwargs)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='106' class="post-context" id="post125417164075456">
+                  
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>        view.view_class = cls</pre></li>
+                  
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>        view.view_initkwargs = initkwargs</pre></li>
+                  
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>        # __name__ and __qualname__ are intentionally left unchanged as</pre></li>
+                  
+                  <li onclick="toggle('pre125417164075456', 'post125417164075456')"><pre>        # view_class should be used to robustly determine the name of the view</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164075456">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>args</td>
+                    <td class="code"><pre>()</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>cls</td>
+                    <td class="code"><pre>&lt;class &#x27;lsd_app.views.WrappedAPIView&#x27;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>initkwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;WSGIRequest: POST &#x27;/predict&#x27;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py</code>, line 515, in dispatch
+          
+
+          
+            <div class="context" id="c125417162833536">
+              
+                <ol start="508" class="pre-context" id="pre125417162833536">
+                
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>                                  self.http_method_not_allowed)</pre></li>
+                
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>            else:</pre></li>
+                
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>                handler = self.http_method_not_allowed</pre></li>
+                
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>            response = handler(request, *args, **kwargs)</pre></li>
+                
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>        except Exception as exc:</pre></li>
+                
+                </ol>
+              
+              <ol start="515" class="context-line">
+                <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>            response = self.handle_exception(exc)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='516' class="post-context" id="post125417162833536">
+                  
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>        self.response = self.finalize_response(request, response, *args, **kwargs)</pre></li>
+                  
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>        return self.response</pre></li>
+                  
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>    def options(self, request, *args, **kwargs):</pre></li>
+                  
+                  <li onclick="toggle('pre125417162833536', 'post125417162833536')"><pre>        &quot;&quot;&quot;</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417162833536">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>args</td>
+                    <td class="code"><pre>()</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>handler</td>
+                    <td class="code"><pre>&lt;bound method api_view.&lt;locals&gt;.decorator.&lt;locals&gt;.handler of &lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;rest_framework.request.Request: POST &#x27;/predict&#x27;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py</code>, line 475, in handle_exception
+          
+
+          
+            <div class="context" id="c125417164211584">
+              
+                <ol start="468" class="pre-context" id="pre125417164211584">
+                
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>        exception_handler = self.get_exception_handler()</pre></li>
+                
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>        context = self.get_exception_handler_context()</pre></li>
+                
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>        response = exception_handler(exc, context)</pre></li>
+                
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>        if response is None:</pre></li>
+                
+                </ol>
+              
+              <ol start="475" class="context-line">
+                <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>            self.raise_uncaught_exception(exc)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='476' class="post-context" id="post125417164211584">
+                  
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>        response.exception = True</pre></li>
+                  
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>        return response</pre></li>
+                  
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>    def raise_uncaught_exception(self, exc):</pre></li>
+                  
+                  <li onclick="toggle('pre125417164211584', 'post125417164211584')"><pre>        if settings.DEBUG:</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164211584">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>context</td>
+                    <td class="code"><pre>{&#x27;args&#x27;: (),
+ &#x27;kwargs&#x27;: {},
+ &#x27;request&#x27;: &lt;rest_framework.request.Request: POST &#x27;/predict&#x27;&gt;,
+ &#x27;view&#x27;: &lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>exc</td>
+                    <td class="code"><pre>ValueError(&quot;Layer &#x27;block1_conv1&#x27; expected 2 variables, but received 0 variables during loading. Expected: [&#x27;block1_conv1/kernel:0&#x27;, &#x27;block1_conv1/bias:0&#x27;]&quot;)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>exception_handler</td>
+                    <td class="code"><pre>&lt;function exception_handler at 0x7210f7af1090&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>response</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py</code>, line 486, in raise_uncaught_exception
+          
+
+          
+            <div class="context" id="c125417164631232">
+              
+                <ol start="479" class="pre-context" id="pre125417164631232">
+                
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>    def raise_uncaught_exception(self, exc):</pre></li>
+                
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>        if settings.DEBUG:</pre></li>
+                
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>            request = self.request</pre></li>
+                
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>            renderer_format = getattr(request.accepted_renderer, &#x27;format&#x27;)</pre></li>
+                
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>            use_plaintext_traceback = renderer_format not in (&#x27;html&#x27;, &#x27;api&#x27;, &#x27;admin&#x27;)</pre></li>
+                
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>            request.force_plaintext_errors(use_plaintext_traceback)</pre></li>
+                
+                </ol>
+              
+              <ol start="486" class="context-line">
+                <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>        raise exc</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='487' class="post-context" id="post125417164631232">
+                  
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>    # Note: Views are made CSRF exempt from within `as_view` as to prevent</pre></li>
+                  
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>    # accidental removal of this exemption in cases where `dispatch` needs to</pre></li>
+                  
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>    # be overridden.</pre></li>
+                  
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>    def dispatch(self, request, *args, **kwargs):</pre></li>
+                  
+                  <li onclick="toggle('pre125417164631232', 'post125417164631232')"><pre>        &quot;&quot;&quot;</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164631232">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>exc</td>
+                    <td class="code"><pre>ValueError(&quot;Layer &#x27;block1_conv1&#x27; expected 2 variables, but received 0 variables during loading. Expected: [&#x27;block1_conv1/kernel:0&#x27;, &#x27;block1_conv1/bias:0&#x27;]&quot;)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>renderer_format</td>
+                    <td class="code"><pre>&#x27;json&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;rest_framework.request.Request: POST &#x27;/predict&#x27;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>use_plaintext_traceback</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py</code>, line 512, in dispatch
+          
+
+          
+            <div class="context" id="c125417164312064">
+              
+                <ol start="505" class="pre-context" id="pre125417164312064">
+                
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>            # Get the appropriate handler method</pre></li>
+                
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>            if request.method.lower() in self.http_method_names:</pre></li>
+                
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>                handler = getattr(self, request.method.lower(),</pre></li>
+                
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>                                  self.http_method_not_allowed)</pre></li>
+                
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>            else:</pre></li>
+                
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>                handler = self.http_method_not_allowed</pre></li>
+                
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre></pre></li>
+                
+                </ol>
+              
+              <ol start="512" class="context-line">
+                <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>            response = handler(request, *args, **kwargs)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='513' class="post-context" id="post125417164312064">
+                  
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>        except Exception as exc:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>            response = self.handle_exception(exc)</pre></li>
+                  
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>        self.response = self.finalize_response(request, response, *args, **kwargs)</pre></li>
+                  
+                  <li onclick="toggle('pre125417164312064', 'post125417164312064')"><pre>        return self.response</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164312064">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>args</td>
+                    <td class="code"><pre>()</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>handler</td>
+                    <td class="code"><pre>&lt;bound method api_view.&lt;locals&gt;.decorator.&lt;locals&gt;.handler of &lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;rest_framework.request.Request: POST &#x27;/predict&#x27;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/decorators.py</code>, line 50, in handler
+          
+
+          
+            <div class="context" id="c125417164315264">
+              
+                <ol start="43" class="pre-context" id="pre125417164315264">
+                
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>        assert isinstance(http_method_names, (list, tuple)), \</pre></li>
+                
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>            &#x27;@api_view expected a list of strings, received %s&#x27; % type(http_method_names).__name__</pre></li>
+                
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>        allowed_methods = set(http_method_names) | {&#x27;options&#x27;}</pre></li>
+                
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>        WrappedAPIView.http_method_names = [method.lower() for method in allowed_methods]</pre></li>
+                
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>        def handler(self, *args, **kwargs):</pre></li>
+                
+                </ol>
+              
+              <ol start="50" class="context-line">
+                <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>            return func(*args, **kwargs)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='51' class="post-context" id="post125417164315264">
+                  
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>        for method in http_method_names:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>            setattr(WrappedAPIView, method.lower(), handler)</pre></li>
+                  
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>        WrappedAPIView.__name__ = func.__name__</pre></li>
+                  
+                  <li onclick="toggle('pre125417164315264', 'post125417164315264')"><pre>        WrappedAPIView.__module__ = func.__module__</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164315264">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>args</td>
+                    <td class="code"><pre>(&lt;rest_framework.request.Request: POST &#x27;/predict&#x27;&gt;,)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>func</td>
+                    <td class="code"><pre>&lt;function predict_api at 0x7210f57a5a20&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;lsd_app.views.WrappedAPIView object at 0x7210f5671870&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/lsd_app/views.py</code>, line 207, in predict_api
+          
+
+          
+            <div class="context" id="c125417164314496">
+              
+                <ol start="200" class="pre-context" id="pre125417164314496">
+                
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>        if not verify_is_cattle(image_path):</pre></li>
+                
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>            return Response({</pre></li>
+                
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>                &#x27;result&#x27;: &#x27;Invalid Image&#x27;,</pre></li>
+                
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>                &#x27;detail&#x27;: &#x27;The uploaded image does not appear to be cattle. Please upload a clear image of a cow or bull.&#x27;,</pre></li>
+                
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>                &#x27;confidence&#x27;: 0.0</pre></li>
+                
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>            }, status=status.HTTP_400_BAD_REQUEST)</pre></li>
+                
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>            </pre></li>
+                
+                </ol>
+              
+              <ol start="207" class="context-line">
+                <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>        preds, label = predict_image(image_path)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='208' class="post-context" id="post125417164314496">
+                  
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>        confidence = float(preds[np.argmax(preds)])  # Get confidence</pre></li>
+                  
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>        serializer = PredictionResultSerializer(data={&#x27;result&#x27;: label, &#x27;confidence&#x27;: confidence})</pre></li>
+                  
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>        if serializer.is_valid():</pre></li>
+                  
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>            return Response(serializer.data, status=status.HTTP_200_OK)</pre></li>
+                  
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>        else:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164314496', 'post125417164314496')"><pre>            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164314496">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>filename</td>
+                    <td class="code"><pre>&#x27;test.jpg&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>fs</td>
+                    <td class="code"><pre>&lt;django.core.files.storage.filesystem.FileSystemStorage object at 0x7210f56717e0&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>image</td>
+                    <td class="code"><pre>&lt;InMemoryUploadedFile: test.jpg ()&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>image_path</td>
+                    <td class="code"><pre>&#x27;/opt/render/project/src/media/test.jpg&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;rest_framework.request.Request: POST &#x27;/predict&#x27;&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/lsd_app/views.py</code>, line 158, in predict_image
+          
+
+          
+            <div class="context" id="c125417164316160">
+              
+                <ol start="151" class="pre-context" id="pre125417164316160">
+                
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    &quot;&quot;&quot;Bypassed to save memory on Render Free Tier.&quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    return True</pre></li>
+                
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>def predict_image(img_path):</pre></li>
+                
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    img = cv2.imread(img_path)</pre></li>
+                
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    img = cv2.resize(img, (224, 224))</pre></li>
+                
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    img = preprocess_input(np.expand_dims(img, axis=0))</pre></li>
+                
+                </ol>
+              
+              <ol start="158" class="context-line">
+                <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    preds = get_model().predict(img)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='159' class="post-context" id="post125417164316160">
+                  
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    return preds[0], CLASS_NAMES[np.argmax(preds)]</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>def index1(request):</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>    if request.method == &quot;POST&quot; and request.FILES[&quot;image&quot;]:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316160', 'post125417164316160')"><pre>        img = request.FILES[&quot;image&quot;]</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164316160">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>img</td>
+                    <td class="code"><pre>array([[[[-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         ...,
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ]],
+
+        [[-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         ...,
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ]],
+
+        [[-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         ...,
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ]],
+
+        ...,
+
+        [[-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         ...,
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ]],
+
+        [[-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         ...,
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ]],
+
+        [[-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         ...,
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ],
+         [-103.939, -116.779, -123.68 ]]]], dtype=float32)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>img_path</td>
+                    <td class="code"><pre>&#x27;/opt/render/project/src/media/test.jpg&#x27;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/lsd_app/views.py</code>, line 84, in get_model
+          
+
+          
+            <div class="context" id="c125417162831808">
+              
+                <ol start="77" class="pre-context" id="pre125417162831808">
+                
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>model = None</pre></li>
+                
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>verifier_model = None</pre></li>
+                
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>def get_model():</pre></li>
+                
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>    global model</pre></li>
+                
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>    if model is None:</pre></li>
+                
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>        if os.path.exists(&quot;model.keras&quot;):</pre></li>
+                
+                </ol>
+              
+              <ol start="84" class="context-line">
+                <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>            model = load_model(&quot;model.keras&quot;)</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='85' class="post-context" id="post125417162831808">
+                  
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>        else:</pre></li>
+                  
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>            raise FileNotFoundError(&quot;model.keras not found&quot;)</pre></li>
+                  
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>    return model</pre></li>
+                  
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>def get_verifier():</pre></li>
+                  
+                  <li onclick="toggle('pre125417162831808', 'post125417162831808')"><pre>    return None  # Disabled to save memory on Render</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_api.py</code>, line 254, in load_model
+          
+
+          
+            <div class="context" id="c125417161926272">
+              
+                <ol start="247" class="pre-context" id="pre125417161926272">
+                
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>    if is_keras_zip:</pre></li>
+                
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>        if kwargs:</pre></li>
+                
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>            raise ValueError(</pre></li>
+                
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>                &quot;The following argument(s) are not supported &quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>                f&quot;with the native Keras format: {list(kwargs.keys())}&quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>            )</pre></li>
+                
+                </ol>
+              
+              <ol start="254" class="context-line">
+                <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>        return saving_lib.load_model(</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='255' class="post-context" id="post125417161926272">
+                  
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>            filepath,</pre></li>
+                  
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>            custom_objects=custom_objects,</pre></li>
+                  
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>            compile=compile,</pre></li>
+                  
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>            safe_mode=safe_mode,</pre></li>
+                  
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre>        )</pre></li>
+                  
+                  <li onclick="toggle('pre125417161926272', 'post125417161926272')"><pre></pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417161926272">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>compile</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>custom_objects</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>filepath</td>
+                    <td class="code"><pre>&#x27;model.keras&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>gs_filepath</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>is_keras_zip</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>safe_mode</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>save_format</td>
+                    <td class="code"><pre>&#x27;keras&#x27;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py</code>, line 281, in load_model
+          
+
+          
+            <div class="context" id="c125417164073408">
+              
+                <ol start="274" class="pre-context" id="pre125417164073408">
+                
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>                visited_trackables=set(),</pre></li>
+                
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>            )</pre></li>
+                
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>            weights_store.close()</pre></li>
+                
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>            if asset_store:</pre></li>
+                
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>                asset_store.close()</pre></li>
+                
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>    except Exception as e:</pre></li>
+                
+                </ol>
+              
+              <ol start="281" class="context-line">
+                <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>        raise e</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='282' class="post-context" id="post125417164073408">
+                  
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>    else:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>        return model</pre></li>
+                  
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>    finally:</pre></li>
+                  
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre>        _SAVING_V3_ENABLED.value = saving_v3_enabled_value</pre></li>
+                  
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417164073408', 'post125417164073408')"><pre></pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164073408">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>all_filenames</td>
+                    <td class="code"><pre>[&#x27;metadata.json&#x27;, &#x27;config.json&#x27;, &#x27;model.weights.h5&#x27;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>asset_store</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>compile</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>config_dict</td>
+                    <td class="code"><pre>{&#x27;build_config&#x27;: {&#x27;input_shape&#x27;: [None, 224, 224, 3]},
+ &#x27;class_name&#x27;: &#x27;Sequential&#x27;,
+ &#x27;compile_config&#x27;: {&#x27;jit_compile&#x27;: None,
+                    &#x27;loss&#x27;: &#x27;categorical_crossentropy&#x27;,
+                    &#x27;loss_weights&#x27;: None,
+                    &#x27;metrics&#x27;: [&#x27;accuracy&#x27;],
+                    &#x27;optimizer&#x27;: {&#x27;class_name&#x27;: &#x27;Adam&#x27;,
+                                  &#x27;config&#x27;: {&#x27;amsgrad&#x27;: False,
+                                             &#x27;beta_1&#x27;: 0.9,
+                                             &#x27;beta_2&#x27;: 0.999,
+                                             &#x27;clipnorm&#x27;: None,
+                                             &#x27;clipvalue&#x27;: None,
+                                             &#x27;ema_momentum&#x27;: 0.99,
+                                             &#x27;ema_overwrite_frequency&#x27;: None,
+                                             &#x27;epsilon&#x27;: 1e-07,
+                                             &#x27;global_clipnorm&#x27;: None,
+                                             &#x27;is_legacy_optimizer&#x27;: False,
+                                             &#x27;jit_compile&#x27;: False,
+                                             &#x27;learning_rate&#x27;: 9.999999747378752e-05,
+                                             &#x27;name&#x27;: &#x27;Adam&#x27;,
+                                             &#x27;use_ema&#x27;: False,
+                                             &#x27;weight_decay&#x27;: None},
+                                  &#x27;module&#x27;: &#x27;keras.optimizers&#x27;,
+                                  &#x27;registered_name&#x27;: None},
+                    &#x27;run_eagerly&#x27;: None,
+                    &#x27;steps_per_execution&#x27;: None,
+                    &#x27;weighted_metrics&#x27;: None},
+ &#x27;config&#x27;: {&#x27;layers&#x27;: [{&#x27;class_name&#x27;: &#x27;InputLayer&#x27;,
+                        &#x27;config&#x27;: {&#x27;batch_input_shape&#x27;: [None, 224, 224, 3],
+                                   &#x27;dtype&#x27;: &#x27;float32&#x27;,
+                                   &#x27;name&#x27;: &#x27;vgg16_input&#x27;,
+                                   &#x27;ragged&#x27;: False,
+                                   &#x27;sparse&#x27;: False},
+                        &#x27;module&#x27;: &#x27;keras.layers&#x27;,
+                        &#x27;registered_name&#x27;: None},
+                       {&#x27;build_config&#x27;: {&#x27;input_shape&#x27;: [None, 224, 224, 3]},
+                        &#x27;class_name&#x27;: &#x27;Functional&#x27;,
+                        &#x27;config&#x27;: {&#x27;input_layers&#x27;: [[&#x27;input_1&#x27;, 0, 0]],
+                                   &#x27;layers&#x27;: [{&#x27;class_name&#x27;: &#x27;InputLayer&#x27;,
+                                               &#x27;config&#x27;: {&#x27;batch_input_shape&#x27;: [None,
+                                                                                224,
+                                                                                224,
+                                                                                3],
+                                                          &#x27;dtype&#x27;: &#x27;float32&#x27;,
+                                                          &#x27;name&#x27;: &#x27;input_1&#x27;,
+                                                          &#x27;ragged&#x27;: False,
+                                                          &#x27;sparse&#x27;: False},
+                                               &#x27;inbound_nodes&#x27;: [],
+                                               &#x27;module&#x27;: &#x27;keras.layers&#x27;,
+                                               &#x27;name&#x27;: &#x27;input_1&#x27;,
+                                               &#x27;registered_name&#x27;: None},
+                                              {&#x27;build_config&#x27;: {&#x27;input_shape&#x27;: [None,
+                                                                                224,
+                                                                                224,
+                                                                                3]},
+                                               &#x27;class_name&#x27;: &#x27;Conv2D&#x27;,
+                                               &#x27;config&#x27;: {&#x27;activation&#x27;: &#x27;relu&#x27;,
+                                                          &#x27;activity_regularizer&#x27;: None,
+                                                          &#x27;bias_constraint&#x27;: None,
+                                                          &#x27;bias_initializer&#x27;: {&#x27;class_name&#x27;: &#x27;Zeros&#x27;,
+                                                                               &#x27;config&#x27;… &lt;trimmed 56524 bytes string&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>config_json</td>
+                    <td class="code"><pre>(b&#x27;{&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;Sequential&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;sequenti&#x27;
+ b&#x27;al&quot;, &quot;layers&quot;: [{&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;InputLayer&quot;, &quot;conf&#x27;
+ b&#x27;ig&quot;: {&quot;batch_input_shape&quot;: [null, 224, 224, 3], &quot;dtype&quot;: &quot;float32&quot;, &quot;sparse&quot;&#x27;
+ b&#x27;: false, &quot;ragged&quot;: false, &quot;name&quot;: &quot;vgg16_input&quot;}, &quot;registered_name&quot;: null}, &#x27;
+ b&#x27;{&quot;module&quot;: &quot;keras.src.engine.functional&quot;, &quot;class_name&quot;: &quot;Functional&quot;, &quot;confi&#x27;
+ b&#x27;g&quot;: {&quot;name&quot;: &quot;vgg16&quot;, &quot;trainable&quot;: false, &quot;layers&quot;: [{&quot;module&quot;: &quot;keras.layer&#x27;
+ b&#x27;s&quot;, &quot;class_name&quot;: &quot;InputLayer&quot;, &quot;config&quot;: {&quot;batch_input_shape&quot;: [null, 224, &#x27;
+ b&#x27;224, 3], &quot;dtype&quot;: &quot;float32&quot;, &quot;sparse&quot;: false, &quot;ragged&quot;: false, &quot;name&quot;: &quot;inpu&#x27;
+ b&#x27;t_1&quot;}, &quot;registered_name&quot;: null, &quot;name&quot;: &quot;input_1&quot;, &quot;inbound_nodes&quot;: []}, {&quot;m&#x27;
+ b&#x27;odule&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block1_c&#x27;
+ b&#x27;onv1&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 64, &quot;kernel_size&quot;:&#x27;
+ b&#x27; [3, 3], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;same&quot;, &quot;data_format&quot;: &quot;channels_last&#x27;
+ b&#x27;&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: t&#x27;
+ b&#x27;rue, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;G&#x27;
+ b&#x27;lorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: null}, &quot;bias_ini&#x27;
+ b&#x27;tializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;:&#x27;
+ b&#x27; {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&#x27;
+ b&#x27;&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_cons&#x27;
+ b&#x27;traint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;input_shape&quot;: [nu&#x27;
+ b&#x27;ll, 224, 224, 3]}, &quot;name&quot;: &quot;block1_conv1&quot;, &quot;inbound_nodes&quot;: [[[&quot;input_1&quot;, 0,&#x27;
+ b&#x27; 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;n&#x27;
+ b&#x27;ame&quot;: &quot;block1_conv2&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 64,&#x27;
+ b&#x27; &quot;kernel_size&quot;: [3, 3], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;same&quot;, &quot;data_format&quot;:&#x27;
+ b&#x27; &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;&#x27;
+ b&#x27;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;&#x27;
+ b&#x27;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: n&#x27;
+ b&#x27;ull}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Ze&#x27;
+ b&#x27;ros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;b&#x27;
+ b&#x27;ias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: n&#x27;
+ b&#x27;ull, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;in&#x27;
+ b&#x27;put_shape&quot;: [null, 224, 224, 64]}, &quot;name&quot;: &quot;block1_conv2&quot;, &quot;inbound_nodes&quot;: &#x27;
+ b&#x27;[[[&quot;block1_conv1&quot;, 0, 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;M&#x27;
+ b&#x27;axPooling2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block1_pool&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;:&#x27;
+ b&#x27; &quot;float32&quot;, &quot;pool_size&quot;: [2, 2], &quot;padding&quot;: &quot;valid&quot;, &quot;strides&quot;: [2, 2], &quot;dat&#x27;
+ b&#x27;a_format&quot;: &quot;channels_last&quot;}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;inpu&#x27;
+ b&#x27;t_shape&quot;: [null, 224, 224, 64]}, &quot;name&quot;: &quot;block1_pool&quot;, &quot;inbound_nodes&quot;: [[[&#x27;
+ b&#x27;&quot;block1_conv2&quot;, 0, 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv&#x27;
+ b&#x27;2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block2_conv1&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;: &quot;float3&#x27;
+ b&#x27;2&quot;, &quot;filters&quot;: 128, &quot;kernel_size&quot;: [3, 3], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;sa&#x27;
+ b&#x27;me&quot;, &quot;data_format&quot;: &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;&#x27;
+ b&#x27;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;ker&#x27;
+ b&#x27;as.initializers&quot;, &quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;&#x27;
+ b&#x27;registered_name&quot;: null}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;&#x27;
+ b&#x27;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_reg&#x27;
+ b&#x27;ularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;ke&#x27;
+ b&#x27;rnel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;&#x27;
+ b&#x27;build_config&quot;: {&quot;input_shape&quot;: [null, 112, 112, 64]}, &quot;name&quot;: &quot;block2_conv1&quot;&#x27;
+ b&#x27;, &quot;inbound_nodes&quot;: [[[&quot;block1_pool&quot;, 0, 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;&#x27;
+ b&#x27;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block2_conv2&quot;, &quot;trainable&quot;: fa&#x27;
+ b&#x27;lse, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 128, &quot;kernel_size&quot;: [3, 3], &quot;strides&quot;: [&#x27;
+ b&#x27;1, 1], &quot;padding&quot;: &quot;same&quot;, &quot;data_format&quot;: &quot;c… &lt;trimmed 17149 bytes string&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>custom_objects</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>f</td>
+                    <td class="code"><pre>&lt;zipfile.ZipExtFile [closed]&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>filepath</td>
+                    <td class="code"><pre>&#x27;model.keras&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>gfile_handle</td>
+                    <td class="code"><pre>&lt;tensorflow.python.platform.gfile.GFile object at 0x7210f5672f50&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>model</td>
+                    <td class="code"><pre>&lt;keras.src.engine.sequential.Sequential object at 0x7210f5672a10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>safe_mode</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>saving_v3_enabled_value</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>weights_store</td>
+                    <td class="code"><pre>&lt;keras.src.saving.saving_lib.H5IOStore object at 0x7210f589fa00&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>zf</td>
+                    <td class="code"><pre>&lt;zipfile.ZipFile [closed]&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py</code>, line 269, in load_model
+          
+
+          
+            <div class="context" id="c125417164323584">
+              
+                <ol start="262" class="pre-context" id="pre125417164323584">
+                
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                )</pre></li>
+                
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>            if len(all_filenames) &gt; 3:</pre></li>
+                
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                asset_store = DiskIOStore(_ASSETS_DIRNAME, archive=zf, mode=&quot;r&quot;)</pre></li>
+                
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>            else:</pre></li>
+                
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                asset_store = None</pre></li>
+                
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre></pre></li>
+                
+                </ol>
+              
+              <ol start="269" class="context-line">
+                <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>            _load_state(</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='270' class="post-context" id="post125417164323584">
+                  
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                model,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                weights_store=weights_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                assets_store=asset_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                inner_path=&quot;&quot;,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>                visited_trackables=set(),</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323584', 'post125417164323584')"><pre>            )</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164323584">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>all_filenames</td>
+                    <td class="code"><pre>[&#x27;metadata.json&#x27;, &#x27;config.json&#x27;, &#x27;model.weights.h5&#x27;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>asset_store</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>compile</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>config_dict</td>
+                    <td class="code"><pre>{&#x27;build_config&#x27;: {&#x27;input_shape&#x27;: [None, 224, 224, 3]},
+ &#x27;class_name&#x27;: &#x27;Sequential&#x27;,
+ &#x27;compile_config&#x27;: {&#x27;jit_compile&#x27;: None,
+                    &#x27;loss&#x27;: &#x27;categorical_crossentropy&#x27;,
+                    &#x27;loss_weights&#x27;: None,
+                    &#x27;metrics&#x27;: [&#x27;accuracy&#x27;],
+                    &#x27;optimizer&#x27;: {&#x27;class_name&#x27;: &#x27;Adam&#x27;,
+                                  &#x27;config&#x27;: {&#x27;amsgrad&#x27;: False,
+                                             &#x27;beta_1&#x27;: 0.9,
+                                             &#x27;beta_2&#x27;: 0.999,
+                                             &#x27;clipnorm&#x27;: None,
+                                             &#x27;clipvalue&#x27;: None,
+                                             &#x27;ema_momentum&#x27;: 0.99,
+                                             &#x27;ema_overwrite_frequency&#x27;: None,
+                                             &#x27;epsilon&#x27;: 1e-07,
+                                             &#x27;global_clipnorm&#x27;: None,
+                                             &#x27;is_legacy_optimizer&#x27;: False,
+                                             &#x27;jit_compile&#x27;: False,
+                                             &#x27;learning_rate&#x27;: 9.999999747378752e-05,
+                                             &#x27;name&#x27;: &#x27;Adam&#x27;,
+                                             &#x27;use_ema&#x27;: False,
+                                             &#x27;weight_decay&#x27;: None},
+                                  &#x27;module&#x27;: &#x27;keras.optimizers&#x27;,
+                                  &#x27;registered_name&#x27;: None},
+                    &#x27;run_eagerly&#x27;: None,
+                    &#x27;steps_per_execution&#x27;: None,
+                    &#x27;weighted_metrics&#x27;: None},
+ &#x27;config&#x27;: {&#x27;layers&#x27;: [{&#x27;class_name&#x27;: &#x27;InputLayer&#x27;,
+                        &#x27;config&#x27;: {&#x27;batch_input_shape&#x27;: [None, 224, 224, 3],
+                                   &#x27;dtype&#x27;: &#x27;float32&#x27;,
+                                   &#x27;name&#x27;: &#x27;vgg16_input&#x27;,
+                                   &#x27;ragged&#x27;: False,
+                                   &#x27;sparse&#x27;: False},
+                        &#x27;module&#x27;: &#x27;keras.layers&#x27;,
+                        &#x27;registered_name&#x27;: None},
+                       {&#x27;build_config&#x27;: {&#x27;input_shape&#x27;: [None, 224, 224, 3]},
+                        &#x27;class_name&#x27;: &#x27;Functional&#x27;,
+                        &#x27;config&#x27;: {&#x27;input_layers&#x27;: [[&#x27;input_1&#x27;, 0, 0]],
+                                   &#x27;layers&#x27;: [{&#x27;class_name&#x27;: &#x27;InputLayer&#x27;,
+                                               &#x27;config&#x27;: {&#x27;batch_input_shape&#x27;: [None,
+                                                                                224,
+                                                                                224,
+                                                                                3],
+                                                          &#x27;dtype&#x27;: &#x27;float32&#x27;,
+                                                          &#x27;name&#x27;: &#x27;input_1&#x27;,
+                                                          &#x27;ragged&#x27;: False,
+                                                          &#x27;sparse&#x27;: False},
+                                               &#x27;inbound_nodes&#x27;: [],
+                                               &#x27;module&#x27;: &#x27;keras.layers&#x27;,
+                                               &#x27;name&#x27;: &#x27;input_1&#x27;,
+                                               &#x27;registered_name&#x27;: None},
+                                              {&#x27;build_config&#x27;: {&#x27;input_shape&#x27;: [None,
+                                                                                224,
+                                                                                224,
+                                                                                3]},
+                                               &#x27;class_name&#x27;: &#x27;Conv2D&#x27;,
+                                               &#x27;config&#x27;: {&#x27;activation&#x27;: &#x27;relu&#x27;,
+                                                          &#x27;activity_regularizer&#x27;: None,
+                                                          &#x27;bias_constraint&#x27;: None,
+                                                          &#x27;bias_initializer&#x27;: {&#x27;class_name&#x27;: &#x27;Zeros&#x27;,
+                                                                               &#x27;config&#x27;… &lt;trimmed 56524 bytes string&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>config_json</td>
+                    <td class="code"><pre>(b&#x27;{&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;Sequential&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;sequenti&#x27;
+ b&#x27;al&quot;, &quot;layers&quot;: [{&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;InputLayer&quot;, &quot;conf&#x27;
+ b&#x27;ig&quot;: {&quot;batch_input_shape&quot;: [null, 224, 224, 3], &quot;dtype&quot;: &quot;float32&quot;, &quot;sparse&quot;&#x27;
+ b&#x27;: false, &quot;ragged&quot;: false, &quot;name&quot;: &quot;vgg16_input&quot;}, &quot;registered_name&quot;: null}, &#x27;
+ b&#x27;{&quot;module&quot;: &quot;keras.src.engine.functional&quot;, &quot;class_name&quot;: &quot;Functional&quot;, &quot;confi&#x27;
+ b&#x27;g&quot;: {&quot;name&quot;: &quot;vgg16&quot;, &quot;trainable&quot;: false, &quot;layers&quot;: [{&quot;module&quot;: &quot;keras.layer&#x27;
+ b&#x27;s&quot;, &quot;class_name&quot;: &quot;InputLayer&quot;, &quot;config&quot;: {&quot;batch_input_shape&quot;: [null, 224, &#x27;
+ b&#x27;224, 3], &quot;dtype&quot;: &quot;float32&quot;, &quot;sparse&quot;: false, &quot;ragged&quot;: false, &quot;name&quot;: &quot;inpu&#x27;
+ b&#x27;t_1&quot;}, &quot;registered_name&quot;: null, &quot;name&quot;: &quot;input_1&quot;, &quot;inbound_nodes&quot;: []}, {&quot;m&#x27;
+ b&#x27;odule&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block1_c&#x27;
+ b&#x27;onv1&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 64, &quot;kernel_size&quot;:&#x27;
+ b&#x27; [3, 3], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;same&quot;, &quot;data_format&quot;: &quot;channels_last&#x27;
+ b&#x27;&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: t&#x27;
+ b&#x27;rue, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;G&#x27;
+ b&#x27;lorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: null}, &quot;bias_ini&#x27;
+ b&#x27;tializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;:&#x27;
+ b&#x27; {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&#x27;
+ b&#x27;&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_cons&#x27;
+ b&#x27;traint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;input_shape&quot;: [nu&#x27;
+ b&#x27;ll, 224, 224, 3]}, &quot;name&quot;: &quot;block1_conv1&quot;, &quot;inbound_nodes&quot;: [[[&quot;input_1&quot;, 0,&#x27;
+ b&#x27; 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;n&#x27;
+ b&#x27;ame&quot;: &quot;block1_conv2&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 64,&#x27;
+ b&#x27; &quot;kernel_size&quot;: [3, 3], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;same&quot;, &quot;data_format&quot;:&#x27;
+ b&#x27; &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;&#x27;
+ b&#x27;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;&#x27;
+ b&#x27;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: n&#x27;
+ b&#x27;ull}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Ze&#x27;
+ b&#x27;ros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;b&#x27;
+ b&#x27;ias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: n&#x27;
+ b&#x27;ull, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;in&#x27;
+ b&#x27;put_shape&quot;: [null, 224, 224, 64]}, &quot;name&quot;: &quot;block1_conv2&quot;, &quot;inbound_nodes&quot;: &#x27;
+ b&#x27;[[[&quot;block1_conv1&quot;, 0, 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;M&#x27;
+ b&#x27;axPooling2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block1_pool&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;:&#x27;
+ b&#x27; &quot;float32&quot;, &quot;pool_size&quot;: [2, 2], &quot;padding&quot;: &quot;valid&quot;, &quot;strides&quot;: [2, 2], &quot;dat&#x27;
+ b&#x27;a_format&quot;: &quot;channels_last&quot;}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;inpu&#x27;
+ b&#x27;t_shape&quot;: [null, 224, 224, 64]}, &quot;name&quot;: &quot;block1_pool&quot;, &quot;inbound_nodes&quot;: [[[&#x27;
+ b&#x27;&quot;block1_conv2&quot;, 0, 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv&#x27;
+ b&#x27;2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block2_conv1&quot;, &quot;trainable&quot;: false, &quot;dtype&quot;: &quot;float3&#x27;
+ b&#x27;2&quot;, &quot;filters&quot;: 128, &quot;kernel_size&quot;: [3, 3], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;sa&#x27;
+ b&#x27;me&quot;, &quot;data_format&quot;: &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;&#x27;
+ b&#x27;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;ker&#x27;
+ b&#x27;as.initializers&quot;, &quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;&#x27;
+ b&#x27;registered_name&quot;: null}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;&#x27;
+ b&#x27;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_reg&#x27;
+ b&#x27;ularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;ke&#x27;
+ b&#x27;rnel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;&#x27;
+ b&#x27;build_config&quot;: {&quot;input_shape&quot;: [null, 112, 112, 64]}, &quot;name&quot;: &quot;block2_conv1&quot;&#x27;
+ b&#x27;, &quot;inbound_nodes&quot;: [[[&quot;block1_pool&quot;, 0, 0, {}]]]}, {&quot;module&quot;: &quot;keras.layers&quot;&#x27;
+ b&#x27;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;block2_conv2&quot;, &quot;trainable&quot;: fa&#x27;
+ b&#x27;lse, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 128, &quot;kernel_size&quot;: [3, 3], &quot;strides&quot;: [&#x27;
+ b&#x27;1, 1], &quot;padding&quot;: &quot;same&quot;, &quot;data_format&quot;: &quot;c… &lt;trimmed 17149 bytes string&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>custom_objects</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>f</td>
+                    <td class="code"><pre>&lt;zipfile.ZipExtFile [closed]&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>filepath</td>
+                    <td class="code"><pre>&#x27;model.keras&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>gfile_handle</td>
+                    <td class="code"><pre>&lt;tensorflow.python.platform.gfile.GFile object at 0x7210f5672f50&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>model</td>
+                    <td class="code"><pre>&lt;keras.src.engine.sequential.Sequential object at 0x7210f5672a10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>safe_mode</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>saving_v3_enabled_value</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>weights_store</td>
+                    <td class="code"><pre>&lt;keras.src.saving.saving_lib.H5IOStore object at 0x7210f589fa00&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>zf</td>
+                    <td class="code"><pre>&lt;zipfile.ZipFile [closed]&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py</code>, line 466, in _load_state
+          
+
+          
+            <div class="context" id="c125417164323200">
+              
+                <ol start="459" class="pre-context" id="pre125417164323200">
+                
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                weights_store,</pre></li>
+                
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                assets_store,</pre></li>
+                
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                inner_path=tf.io.gfile.join(inner_path, child_attr),</pre></li>
+                
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                skip_mismatch=skip_mismatch,</pre></li>
+                
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                visited_trackables=visited_trackables,</pre></li>
+                
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>            )</pre></li>
+                
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>        elif isinstance(child_obj, (list, dict, tuple, set)):</pre></li>
+                
+                </ol>
+              
+              <ol start="466" class="context-line">
+                <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>            _load_container_state(</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='467' class="post-context" id="post125417164323200">
+                  
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                child_obj,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                weights_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                assets_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                inner_path=tf.io.gfile.join(inner_path, child_attr),</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                skip_mismatch=skip_mismatch,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164323200', 'post125417164323200')"><pre>                visited_trackables=visited_trackables,</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164323200">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>assets_store</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>child_attr</td>
+                    <td class="code"><pre>&#x27;layers&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>child_obj</td>
+                    <td class="code"><pre>[&lt;keras.src.engine.functional.Functional object at 0x7210f5672140&gt;,
+ &lt;keras.src.layers.reshaping.flatten.Flatten object at 0x7210f579d5a0&gt;,
+ &lt;keras.src.layers.core.dense.Dense object at 0x7210f58fb400&gt;,
+ &lt;keras.src.layers.core.dense.Dense object at 0x7210f58fbaf0&gt;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>inner_path</td>
+                    <td class="code"><pre>&#x27;&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>skip_mismatch</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>trackable</td>
+                    <td class="code"><pre>&lt;keras.src.engine.sequential.Sequential object at 0x7210f5672a10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>visited_trackables</td>
+                    <td class="code"><pre>{125417162222096, 125417165599264, 125417162219840, 125417162220752}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>weights_store</td>
+                    <td class="code"><pre>&lt;keras.src.saving.saving_lib.H5IOStore object at 0x7210f589fa00&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py</code>, line 534, in _load_container_state
+          
+
+          
+            <div class="context" id="c125417164316736">
+              
+                <ol start="527" class="pre-context" id="pre125417164316736">
+                
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>            # (i.e. they may vary across two instances of the same model).</pre></li>
+                
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>            name = generic_utils.to_snake_case(trackable.__class__.__name__)</pre></li>
+                
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>            if name in used_names:</pre></li>
+                
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                used_names[name] += 1</pre></li>
+                
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                name = f&quot;{name}_{used_names[name]}&quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>            else:</pre></li>
+                
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                used_names[name] = 0</pre></li>
+                
+                </ol>
+              
+              <ol start="534" class="context-line">
+                <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>            _load_state(</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='535' class="post-context" id="post125417164316736">
+                  
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                trackable,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                weights_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                assets_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                inner_path=tf.io.gfile.join(inner_path, name),</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                skip_mismatch=skip_mismatch,</pre></li>
+                  
+                  <li onclick="toggle('pre125417164316736', 'post125417164316736')"><pre>                visited_trackables=visited_trackables,</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164316736">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>assets_store</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>container</td>
+                    <td class="code"><pre>[&lt;keras.src.engine.functional.Functional object at 0x7210f5672140&gt;,
+ &lt;keras.src.layers.reshaping.flatten.Flatten object at 0x7210f579d5a0&gt;,
+ &lt;keras.src.layers.core.dense.Dense object at 0x7210f58fb400&gt;,
+ &lt;keras.src.layers.core.dense.Dense object at 0x7210f58fbaf0&gt;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>inner_path</td>
+                    <td class="code"><pre>&#x27;layers&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>name</td>
+                    <td class="code"><pre>&#x27;functional&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>skip_mismatch</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>trackable</td>
+                    <td class="code"><pre>&lt;keras.src.engine.functional.Functional object at 0x7210f5672140&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>used_names</td>
+                    <td class="code"><pre>{&#x27;functional&#x27;: 0}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>visited_trackables</td>
+                    <td class="code"><pre>{125417162222096, 125417165599264, 125417162219840, 125417162220752}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>weights_store</td>
+                    <td class="code"><pre>&lt;keras.src.saving.saving_lib.H5IOStore object at 0x7210f589fa00&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py</code>, line 466, in _load_state
+          
+
+          
+            <div class="context" id="c125417163437568">
+              
+                <ol start="459" class="pre-context" id="pre125417163437568">
+                
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                weights_store,</pre></li>
+                
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                assets_store,</pre></li>
+                
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                inner_path=tf.io.gfile.join(inner_path, child_attr),</pre></li>
+                
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                skip_mismatch=skip_mismatch,</pre></li>
+                
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                visited_trackables=visited_trackables,</pre></li>
+                
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>            )</pre></li>
+                
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>        elif isinstance(child_obj, (list, dict, tuple, set)):</pre></li>
+                
+                </ol>
+              
+              <ol start="466" class="context-line">
+                <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>            _load_container_state(</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='467' class="post-context" id="post125417163437568">
+                  
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                child_obj,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                weights_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                assets_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                inner_path=tf.io.gfile.join(inner_path, child_attr),</pre></li>
+                  
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                skip_mismatch=skip_mismatch,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163437568', 'post125417163437568')"><pre>                visited_trackables=visited_trackables,</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417163437568">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>assets_store</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>child_attr</td>
+                    <td class="code"><pre>&#x27;layers&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>child_obj</td>
+                    <td class="code"><pre>[&lt;keras.src.engine.input_layer.InputLayer object at 0x7210f56724d0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f5670190&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57e9d20&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f57ea1a0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57ffbe0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fd330&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f57fe6e0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fc940&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fed70&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fca00&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f57fcb20&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0574190&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0574760&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0574d30&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f0575300&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0575660&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0575c30&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0576200&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f05767d0&gt;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>inner_path</td>
+                    <td class="code"><pre>&#x27;layers/functional&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>skip_mismatch</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>trackable</td>
+                    <td class="code"><pre>&lt;keras.src.engine.functional.Functional object at 0x7210f5672140&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>visited_trackables</td>
+                    <td class="code"><pre>{125417162222096, 125417165599264, 125417162219840, 125417162220752}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>weights_store</td>
+                    <td class="code"><pre>&lt;keras.src.saving.saving_lib.H5IOStore object at 0x7210f589fa00&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py</code>, line 534, in _load_container_state
+          
+
+          
+            <div class="context" id="c125417163850624">
+              
+                <ol start="527" class="pre-context" id="pre125417163850624">
+                
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>            # (i.e. they may vary across two instances of the same model).</pre></li>
+                
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>            name = generic_utils.to_snake_case(trackable.__class__.__name__)</pre></li>
+                
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>            if name in used_names:</pre></li>
+                
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                used_names[name] += 1</pre></li>
+                
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                name = f&quot;{name}_{used_names[name]}&quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>            else:</pre></li>
+                
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                used_names[name] = 0</pre></li>
+                
+                </ol>
+              
+              <ol start="534" class="context-line">
+                <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>            _load_state(</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='535' class="post-context" id="post125417163850624">
+                  
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                trackable,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                weights_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                assets_store,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                inner_path=tf.io.gfile.join(inner_path, name),</pre></li>
+                  
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                skip_mismatch=skip_mismatch,</pre></li>
+                  
+                  <li onclick="toggle('pre125417163850624', 'post125417163850624')"><pre>                visited_trackables=visited_trackables,</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417163850624">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>assets_store</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>container</td>
+                    <td class="code"><pre>[&lt;keras.src.engine.input_layer.InputLayer object at 0x7210f56724d0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f5670190&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57e9d20&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f57ea1a0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57ffbe0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fd330&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f57fe6e0&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fc940&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fed70&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f57fca00&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f57fcb20&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0574190&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0574760&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0574d30&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f0575300&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0575660&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0575c30&gt;,
+ &lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f0576200&gt;,
+ &lt;keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7210f05767d0&gt;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>inner_path</td>
+                    <td class="code"><pre>&#x27;layers/functional/layers&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>name</td>
+                    <td class="code"><pre>&#x27;conv2d&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>skip_mismatch</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>trackable</td>
+                    <td class="code"><pre>&lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f5670190&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>used_names</td>
+                    <td class="code"><pre>{&#x27;conv2d&#x27;: 0, &#x27;input_layer&#x27;: 0}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>visited_trackables</td>
+                    <td class="code"><pre>{125417162222096, 125417165599264, 125417162219840, 125417162220752}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>weights_store</td>
+                    <td class="code"><pre>&lt;keras.src.saving.saving_lib.H5IOStore object at 0x7210f589fa00&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py</code>, line 435, in _load_state
+          
+
+          
+            <div class="context" id="c125417163859392">
+              
+                <ol start="428" class="pre-context" id="pre125417163859392">
+                
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>                warnings.warn(</pre></li>
+                
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>                    f&quot;Could not load weights in object {trackable}. &quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>                    &quot;Skipping object. &quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>                    f&quot;Exception encountered: {e}&quot;,</pre></li>
+                
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>                    stacklevel=2,</pre></li>
+                
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>                )</pre></li>
+                
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>        else:</pre></li>
+                
+                </ol>
+              
+              <ol start="435" class="context-line">
+                <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>            trackable.load_own_variables(weights_store.get(inner_path))</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='436' class="post-context" id="post125417163859392">
+                  
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>    if hasattr(trackable, &quot;load_assets&quot;) and assets_store:</pre></li>
+                  
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>        if skip_mismatch:</pre></li>
+                  
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>            try:</pre></li>
+                  
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>                trackable.load_assets(assets_store.get(inner_path))</pre></li>
+                  
+                  <li onclick="toggle('pre125417163859392', 'post125417163859392')"><pre>            except Exception as e:</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417163859392">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>assets_store</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>inner_path</td>
+                    <td class="code"><pre>&#x27;layers/functional/layers/conv2d&#x27;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>skip_mismatch</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>trackable</td>
+                    <td class="code"><pre>&lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f5670190&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>visited_trackables</td>
+                    <td class="code"><pre>{125417162222096, 125417165599264, 125417162219840, 125417162220752}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>weights_store</td>
+                    <td class="code"><pre>&lt;keras.src.saving.saving_lib.H5IOStore object at 0x7210f589fa00&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          
+            <code class="fname">/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py</code>, line 3531, in load_own_variables
+          
+
+          
+            <div class="context" id="c125417164066816">
+              
+                <ol start="3524" class="pre-context" id="pre125417164066816">
+                
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>        Args:</pre></li>
+                
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>            store: Dict from which the state of the model will be loaded.</pre></li>
+                
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>        &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>        self._update_trackables()</pre></li>
+                
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>        all_vars = self._trainable_weights + self._non_trainable_weights</pre></li>
+                
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>        if len(store.keys()) != len(all_vars):</pre></li>
+                
+                </ol>
+              
+              <ol start="3531" class="context-line">
+                <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>            raise ValueError(</pre> <span>…</span></li>
+              </ol>
+              
+                <ol start='3532' class="post-context" id="post125417164066816">
+                  
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>                f&quot;Layer &#x27;{self.name}&#x27; expected {len(all_vars)} variables, &quot;</pre></li>
+                  
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>                &quot;but received &quot;</pre></li>
+                  
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>                f&quot;{len(store.keys())} variables during loading. &quot;</pre></li>
+                  
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>                f&quot;Expected: {[v.name for v in all_vars]}&quot;</pre></li>
+                  
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>            )</pre></li>
+                  
+                  <li onclick="toggle('pre125417164066816', 'post125417164066816')"><pre>        for i, v in enumerate(all_vars):</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            
+              <details>
+                <summary class="commands">Local vars</summary>
+            
+            <table class="vars" id="v125417164066816">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>all_vars</td>
+                    <td class="code"><pre>[&lt;tf.Variable &#x27;block1_conv1/kernel:0&#x27; shape=(3, 3, 3, 64) dtype=float32, numpy=
+array([[[[-0.05338319, -0.01987799, -0.06784429, ...,  0.03838128,
+           0.00017344, -0.03717389],
+         [-0.04073917, -0.04186743, -0.06387462, ...,  0.00686821,
+          -0.01435061,  0.07673207],
+         [ 0.00972563, -0.00052248,  0.08182791, ..., -0.09740501,
+          -0.09598762,  0.0583982 ]],
+
+        [[ 0.05983521, -0.0790043 , -0.03661771, ...,  0.09592633,
+          -0.02322183,  0.01497269],
+         [ 0.00209362,  0.07202534,  0.08314639, ..., -0.0727934 ,
+           0.05002673,  0.08851857],
+         [-0.04291917,  0.09703469, -0.00751077, ...,  0.00505345,
+          -0.02049329, -0.0544564 ]],
+
+        [[-0.00242957,  0.06027617, -0.09310288, ..., -0.03982896,
+           0.09330904, -0.09087389],
+         [ 0.0063405 , -0.0039706 ,  0.03685306, ...,  0.0095913 ,
+           0.00449793, -0.01057547],
+         [ 0.02059764, -0.00333887,  0.00808466, ..., -0.06002547,
+           0.09313907,  0.01371664]]],
+
+
+       [[[-0.07191826, -0.09482956,  0.00493161, ..., -0.05202614,
+           0.08686881, -0.0647984 ],
+         [-0.0706898 , -0.05938201, -0.06234617, ..., -0.02011688,
+           0.07789093, -0.02497291],
+         [-0.00065883,  0.09067631,  0.02190547, ..., -0.09254746,
+           0.00187544,  0.03715201]],
+
+        [[-0.09904079, -0.00635365,  0.06267983, ..., -0.09294639,
+          -0.06945227,  0.06394517],
+         [-0.00279982,  0.06822872, -0.02123313, ...,  0.09955804,
+           0.0292744 , -0.09121626],
+         [-0.06272487,  0.04577342,  0.04654053, ..., -0.09513704,
+           0.05377331,  0.01274629]],
+
+        [[-0.03747212,  0.09393658,  0.00960303, ...,  0.00459691,
+          -0.09577291, -0.08224663],
+         [-0.01656692, -0.0097403 , -0.0768872 , ...,  0.06695823,
+          -0.08518041, -0.01946746],
+         [ 0.07313681, -0.06767744,  0.08112554, ..., -0.08219937,
+           0.06141981,  0.08532499]]],
+
+
+       [[[-0.03392026, -0.02992299, -0.07430233, ..., -0.02542475,
+           0.0460365 , -0.04096198],
+         [-0.03300672,  0.04642259,  0.00305683, ..., -0.06634742,
+           0.0663854 ,  0.04612584],
+         [-0.09841293, -0.03016636,  0.05043317, ..., -0.09523885,
+          -0.00546145, -0.08197903]],
+
+        [[-0.02840289, -0.01453599, -0.08905522, ..., -0.02846727,
+           0.0790558 ,  0.07397433],
+         [ 0.07280917, -0.04012294,  0.09024002, ...,  0.02706358,
+           0.01092382, -0.08536261],
+         [ 0.06593846,  0.02987771,  0.07300682, ..., -0.07637103,
+          -0.04075139,  0.07398766]],
+
+        [[ 0.03608817, -0.05645824,  0.02959023, ...,  0.07495411,
+           0.02900922, -0.06960555],
+         [ 0.08641079, -0.09967098, -0.00612175, ...,  0.01179765,
+           0.04181412,  0.00509454],
+         [ 0.05893612, -0.07011153, -0.05995591, ..., -0.06859855,
+          -0.05250748,  0.01385277]]]], dtype=float32)&gt;,
+ &lt;tf.Variable &#x27;block1_conv1/bias:0&#x27; shape=(64,) dtype=float32, numpy=
+array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], dtype=float32)&gt;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;keras.src.layers.convolutional.conv2d.Conv2D object at 0x7210f5670190&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>store</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+            </details>
+          
+        </li>
+      
+    </ul>
+  </div>
+
+  <form action="https://dpaste.com/" name="pasteform" id="pasteform" method="post">
+  <div id="pastebinTraceback" class="pastebin">
+    <input type="hidden" name="language" value="PythonConsole">
+    <input type="hidden" name="title"
+      value="ValueError at /predict">
+    <input type="hidden" name="source" value="Django Dpaste Agent">
+    <input type="hidden" name="poster" value="Django">
+    <textarea name="content" id="traceback_area" cols="140" rows="25">
+Environment:
+
+
+Request Method: POST
+Request URL: https://lumpy-b7ix.onrender.com/predict
+
+Django Version: 4.2.29
+Python Version: 3.10.0
+Installed Applications:
+[&#x27;django.contrib.admin&#x27;,
+ &#x27;django.contrib.auth&#x27;,
+ &#x27;django.contrib.contenttypes&#x27;,
+ &#x27;django.contrib.sessions&#x27;,
+ &#x27;django.contrib.messages&#x27;,
+ &#x27;django.contrib.staticfiles&#x27;,
+ &#x27;lsd_app&#x27;,
+ &#x27;admins&#x27;,
+ &#x27;rest_framework&#x27;]
+Installed Middleware:
+[&#x27;django.middleware.security.SecurityMiddleware&#x27;,
+ &#x27;django.contrib.sessions.middleware.SessionMiddleware&#x27;,
+ &#x27;django.middleware.common.CommonMiddleware&#x27;,
+ &#x27;django.middleware.csrf.CsrfViewMiddleware&#x27;,
+ &#x27;django.contrib.auth.middleware.AuthenticationMiddleware&#x27;,
+ &#x27;django.contrib.messages.middleware.MessageMiddleware&#x27;,
+ &#x27;django.middleware.clickjacking.XFrameOptionsMiddleware&#x27;]
+
+
+
+Traceback (most recent call last):
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/opt/render/project/src/lsd_app/views.py", line 207, in predict_api
+    preds, label = predict_image(image_path)
+  File "/opt/render/project/src/lsd_app/views.py", line 158, in predict_image
+    preds = get_model().predict(img)
+  File "/opt/render/project/src/lsd_app/views.py", line 84, in get_model
+    model = load_model(&quot;model.keras&quot;)
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_api.py", line 254, in load_model
+    return saving_lib.load_model(
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 281, in load_model
+    raise e
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 269, in load_model
+    _load_state(
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 466, in _load_state
+    _load_container_state(
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 534, in _load_container_state
+    _load_state(
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 466, in _load_state
+    _load_container_state(
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 534, in _load_container_state
+    _load_state(
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 435, in _load_state
+    trackable.load_own_variables(weights_store.get(inner_path))
+  File "/opt/render/project/src/.venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 3531, in load_own_variables
+    raise ValueError(
+
+Exception Type: ValueError at /predict
+Exception Value: Layer &#x27;block1_conv1&#x27; expected 2 variables, but received 0 variables during loading. Expected: [&#x27;block1_conv1/kernel:0&#x27;, &#x27;block1_conv1/bias:0&#x27;]
+</textarea>
+  <br><br>
+  <input type="submit" value="Share this traceback on a public website">
+  </div>
+</form>
+
+</div>
+
+
+<div id="requestinfo">
+  <h2>Request information</h2>
+
+
+  
+    <h3 id="user-info">USER</h3>
+    <p>AnonymousUser</p>
+  
+
+  <h3 id="get-info">GET</h3>
+  
+    <p>No GET data</p>
+  
+
+  <h3 id="post-info">POST</h3>
+  
+    <p>No POST data</p>
+  
+
+  <h3 id="files-info">FILES</h3>
+  
+    <table class="req">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr>
+            <td>file</td>
+            <td class="code"><pre>&lt;InMemoryUploadedFile: test.jpg ()&gt;</pre></td>
+          </tr>
+        
+      </tbody>
+    </table>
+  
+
+  <h3 id="cookie-info">COOKIES</h3>
+  
+    <p>No cookie data</p>
+  
+
+  <h3 id="meta-info">META</h3>
+  <table class="req">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>CONTENT_LENGTH</td>
+          <td class="code"><pre>&#x27;1555&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CONTENT_TYPE</td>
+          <td class="code"><pre>&#x27;multipart/form-data; boundary=dfade248e40a293cd13a151436633731&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_ACCEPT</td>
+          <td class="code"><pre>&#x27;*/*&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_ACCEPT_ENCODING</td>
+          <td class="code"><pre>&#x27;gzip, br&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_CDN_LOOP</td>
+          <td class="code"><pre>&#x27;cloudflare; loops=1&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_CF_CONNECTING_IP</td>
+          <td class="code"><pre>&#x27;106.195.65.136&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_CF_IPCOUNTRY</td>
+          <td class="code"><pre>&#x27;IN&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_CF_RAY</td>
+          <td class="code"><pre>&#x27;9e715098fcbb49d5-IAD&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_CF_VISITOR</td>
+          <td class="code"><pre>&#x27;{&quot;scheme&quot;:&quot;https&quot;}&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_HOST</td>
+          <td class="code"><pre>&#x27;lumpy-b7ix.onrender.com&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_RENDER_PROXY_TTL</td>
+          <td class="code"><pre>&#x27;4&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_RNDR_ID</td>
+          <td class="code"><pre>&#x27;f4568c88-e4ac-456d&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_TRUE_CLIENT_IP</td>
+          <td class="code"><pre>&#x27;106.195.65.136&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_USER_AGENT</td>
+          <td class="code"><pre>&#x27;python-requests/2.32.5&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_X_FORWARDED_FOR</td>
+          <td class="code"><pre>&#x27;106.195.65.136, 104.23.211.36, 10.21.186.4&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_X_FORWARDED_PROTO</td>
+          <td class="code"><pre>&#x27;https&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_X_REQUEST_START</td>
+          <td class="code"><pre>&#x27;1775316212795150&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PATH_INFO</td>
+          <td class="code"><pre>&#x27;/predict&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>QUERY_STRING</td>
+          <td class="code"><pre>&#x27;&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>RAW_URI</td>
+          <td class="code"><pre>&#x27;/predict&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REMOTE_ADDR</td>
+          <td class="code"><pre>&#x27;127.0.0.1&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REMOTE_PORT</td>
+          <td class="code"><pre>&#x27;60784&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REQUEST_METHOD</td>
+          <td class="code"><pre>&#x27;POST&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SCRIPT_NAME</td>
+          <td class="code"><pre>&#x27;&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_NAME</td>
+          <td class="code"><pre>&#x27;0.0.0.0&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_PORT</td>
+          <td class="code"><pre>&#x27;10000&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_PROTOCOL</td>
+          <td class="code"><pre>&#x27;HTTP/1.1&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_SOFTWARE</td>
+          <td class="code"><pre>&#x27;gunicorn/20.1.0&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>gunicorn.socket</td>
+          <td class="code"><pre>&lt;socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=(&#x27;127.0.0.1&#x27;, 10000), raddr=(&#x27;127.0.0.1&#x27;, 60784)&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.errors</td>
+          <td class="code"><pre>&lt;gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7210f5673f70&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.file_wrapper</td>
+          <td class="code"><pre>&lt;class &#x27;gunicorn.http.wsgi.FileWrapper&#x27;&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.input</td>
+          <td class="code"><pre>&lt;gunicorn.http.body.Body object at 0x7210f5673280&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.input_terminated</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.multiprocess</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.multithread</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.run_once</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.url_scheme</td>
+          <td class="code"><pre>&#x27;https&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.version</td>
+          <td class="code"><pre>(1, 0)</pre></td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+  <h3 id="settings-info">Settings</h3>
+  <h4>Using settings module <code>lsd_django.settings</code></h4>
+  <table class="req">
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>ABSOLUTE_URL_OVERRIDES</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ADMINS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ALLOWED_HOSTS</td>
+          <td class="code"><pre>[&#x27;*&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>APPEND_SLASH</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTHENTICATION_BACKENDS</td>
+          <td class="code"><pre>[&#x27;django.contrib.auth.backends.ModelBackend&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTH_PASSWORD_VALIDATORS</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTH_USER_MODEL</td>
+          <td class="code"><pre>&#x27;auth.User&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>BASE_DIR</td>
+          <td class="code"><pre>PosixPath(&#x27;/opt/render/project/src&#x27;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHES</td>
+          <td class="code"><pre>{&#x27;default&#x27;: {&#x27;BACKEND&#x27;: &#x27;django.core.cache.backends.locmem.LocMemCache&#x27;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_ALIAS</td>
+          <td class="code"><pre>&#x27;default&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_KEY_PREFIX</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_SECONDS</td>
+          <td class="code"><pre>600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_AGE</td>
+          <td class="code"><pre>31449600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_HTTPONLY</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_MASKED</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_NAME</td>
+          <td class="code"><pre>&#x27;csrftoken&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_PATH</td>
+          <td class="code"><pre>&#x27;/&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_SAMESITE</td>
+          <td class="code"><pre>&#x27;Lax&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_SECURE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_FAILURE_VIEW</td>
+          <td class="code"><pre>&#x27;django.views.csrf.csrf_failure&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_HEADER_NAME</td>
+          <td class="code"><pre>&#x27;HTTP_X_CSRFTOKEN&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_TRUSTED_ORIGINS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_USE_SESSIONS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATABASES</td>
+          <td class="code"><pre>{&#x27;default&#x27;: {&#x27;ATOMIC_REQUESTS&#x27;: False,
+             &#x27;AUTOCOMMIT&#x27;: True,
+             &#x27;CONN_HEALTH_CHECKS&#x27;: False,
+             &#x27;CONN_MAX_AGE&#x27;: 0,
+             &#x27;ENGINE&#x27;: &#x27;django.db.backends.sqlite3&#x27;,
+             &#x27;HOST&#x27;: &#x27;&#x27;,
+             &#x27;NAME&#x27;: PosixPath(&#x27;/opt/render/project/src/db.sqlite3&#x27;),
+             &#x27;OPTIONS&#x27;: {},
+             &#x27;PASSWORD&#x27;: &#x27;********************&#x27;,
+             &#x27;PORT&#x27;: &#x27;&#x27;,
+             &#x27;TEST&#x27;: {&#x27;CHARSET&#x27;: None,
+                      &#x27;COLLATION&#x27;: None,
+                      &#x27;MIGRATE&#x27;: True,
+                      &#x27;MIRROR&#x27;: None,
+                      &#x27;NAME&#x27;: None},
+             &#x27;TIME_ZONE&#x27;: None,
+             &#x27;USER&#x27;: &#x27;&#x27;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATABASE_ROUTERS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATA_UPLOAD_MAX_MEMORY_SIZE</td>
+          <td class="code"><pre>2621440</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATA_UPLOAD_MAX_NUMBER_FIELDS</td>
+          <td class="code"><pre>1000</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATA_UPLOAD_MAX_NUMBER_FILES</td>
+          <td class="code"><pre>100</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATETIME_FORMAT</td>
+          <td class="code"><pre>&#x27;N j, Y, P&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATETIME_INPUT_FORMATS</td>
+          <td class="code"><pre>[&#x27;%Y-%m-%d %H:%M:%S&#x27;,
+ &#x27;%Y-%m-%d %H:%M:%S.%f&#x27;,
+ &#x27;%Y-%m-%d %H:%M&#x27;,
+ &#x27;%m/%d/%Y %H:%M:%S&#x27;,
+ &#x27;%m/%d/%Y %H:%M:%S.%f&#x27;,
+ &#x27;%m/%d/%Y %H:%M&#x27;,
+ &#x27;%m/%d/%y %H:%M:%S&#x27;,
+ &#x27;%m/%d/%y %H:%M:%S.%f&#x27;,
+ &#x27;%m/%d/%y %H:%M&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATE_FORMAT</td>
+          <td class="code"><pre>&#x27;N j, Y&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATE_INPUT_FORMATS</td>
+          <td class="code"><pre>[&#x27;%Y-%m-%d&#x27;,
+ &#x27;%m/%d/%Y&#x27;,
+ &#x27;%m/%d/%y&#x27;,
+ &#x27;%b %d %Y&#x27;,
+ &#x27;%b %d, %Y&#x27;,
+ &#x27;%d %b %Y&#x27;,
+ &#x27;%d %b, %Y&#x27;,
+ &#x27;%B %d %Y&#x27;,
+ &#x27;%B %d, %Y&#x27;,
+ &#x27;%d %B %Y&#x27;,
+ &#x27;%d %B, %Y&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEBUG</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEBUG_PROPAGATE_EXCEPTIONS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DECIMAL_SEPARATOR</td>
+          <td class="code"><pre>&#x27;.&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_AUTO_FIELD</td>
+          <td class="code"><pre>&#x27;django.db.models.BigAutoField&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_CHARSET</td>
+          <td class="code"><pre>&#x27;utf-8&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_EXCEPTION_REPORTER</td>
+          <td class="code"><pre>&#x27;django.views.debug.ExceptionReporter&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_EXCEPTION_REPORTER_FILTER</td>
+          <td class="code"><pre>&#x27;django.views.debug.SafeExceptionReporterFilter&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_FILE_STORAGE</td>
+          <td class="code"><pre>&#x27;django.core.files.storage.FileSystemStorage&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_FROM_EMAIL</td>
+          <td class="code"><pre>&#x27;webmaster@localhost&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_INDEX_TABLESPACE</td>
+          <td class="code"><pre>&#x27;&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_TABLESPACE</td>
+          <td class="code"><pre>&#x27;&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DISALLOWED_USER_AGENTS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_BACKEND</td>
+          <td class="code"><pre>&#x27;django.core.mail.backends.smtp.EmailBackend&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST</td>
+          <td class="code"><pre>&#x27;localhost&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST_PASSWORD</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST_USER</td>
+          <td class="code"><pre>&#x27;&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_PORT</td>
+          <td class="code"><pre>25</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_SSL_CERTFILE</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_SSL_KEYFILE</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_SUBJECT_PREFIX</td>
+          <td class="code"><pre>&#x27;[Django] &#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_TIMEOUT</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_USE_LOCALTIME</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_USE_SSL</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_USE_TLS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_DIRECTORY_PERMISSIONS</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_HANDLERS</td>
+          <td class="code"><pre>[&#x27;django.core.files.uploadhandler.MemoryFileUploadHandler&#x27;,
+ &#x27;django.core.files.uploadhandler.TemporaryFileUploadHandler&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_MAX_MEMORY_SIZE</td>
+          <td class="code"><pre>2621440</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_PERMISSIONS</td>
+          <td class="code"><pre>420</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_TEMP_DIR</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FIRST_DAY_OF_WEEK</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FIXTURE_DIRS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORCE_SCRIPT_NAME</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORMAT_MODULE_PATH</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORM_RENDERER</td>
+          <td class="code"><pre>&#x27;django.forms.renderers.DjangoTemplates&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>IGNORABLE_404_URLS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>INSTALLED_APPS</td>
+          <td class="code"><pre>[&#x27;django.contrib.admin&#x27;,
+ &#x27;django.contrib.auth&#x27;,
+ &#x27;django.contrib.contenttypes&#x27;,
+ &#x27;django.contrib.sessions&#x27;,
+ &#x27;django.contrib.messages&#x27;,
+ &#x27;django.contrib.staticfiles&#x27;,
+ &#x27;lsd_app&#x27;,
+ &#x27;admins&#x27;,
+ &#x27;rest_framework&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>INTERNAL_IPS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGES</td>
+          <td class="code"><pre>[(&#x27;af&#x27;, &#x27;Afrikaans&#x27;),
+ (&#x27;ar&#x27;, &#x27;Arabic&#x27;),
+ (&#x27;ar-dz&#x27;, &#x27;Algerian Arabic&#x27;),
+ (&#x27;ast&#x27;, &#x27;Asturian&#x27;),
+ (&#x27;az&#x27;, &#x27;Azerbaijani&#x27;),
+ (&#x27;bg&#x27;, &#x27;Bulgarian&#x27;),
+ (&#x27;be&#x27;, &#x27;Belarusian&#x27;),
+ (&#x27;bn&#x27;, &#x27;Bengali&#x27;),
+ (&#x27;br&#x27;, &#x27;Breton&#x27;),
+ (&#x27;bs&#x27;, &#x27;Bosnian&#x27;),
+ (&#x27;ca&#x27;, &#x27;Catalan&#x27;),
+ (&#x27;ckb&#x27;, &#x27;Central Kurdish (Sorani)&#x27;),
+ (&#x27;cs&#x27;, &#x27;Czech&#x27;),
+ (&#x27;cy&#x27;, &#x27;Welsh&#x27;),
+ (&#x27;da&#x27;, &#x27;Danish&#x27;),
+ (&#x27;de&#x27;, &#x27;German&#x27;),
+ (&#x27;dsb&#x27;, &#x27;Lower Sorbian&#x27;),
+ (&#x27;el&#x27;, &#x27;Greek&#x27;),
+ (&#x27;en&#x27;, &#x27;English&#x27;),
+ (&#x27;en-au&#x27;, &#x27;Australian English&#x27;),
+ (&#x27;en-gb&#x27;, &#x27;British English&#x27;),
+ (&#x27;eo&#x27;, &#x27;Esperanto&#x27;),
+ (&#x27;es&#x27;, &#x27;Spanish&#x27;),
+ (&#x27;es-ar&#x27;, &#x27;Argentinian Spanish&#x27;),
+ (&#x27;es-co&#x27;, &#x27;Colombian Spanish&#x27;),
+ (&#x27;es-mx&#x27;, &#x27;Mexican Spanish&#x27;),
+ (&#x27;es-ni&#x27;, &#x27;Nicaraguan Spanish&#x27;),
+ (&#x27;es-ve&#x27;, &#x27;Venezuelan Spanish&#x27;),
+ (&#x27;et&#x27;, &#x27;Estonian&#x27;),
+ (&#x27;eu&#x27;, &#x27;Basque&#x27;),
+ (&#x27;fa&#x27;, &#x27;Persian&#x27;),
+ (&#x27;fi&#x27;, &#x27;Finnish&#x27;),
+ (&#x27;fr&#x27;, &#x27;French&#x27;),
+ (&#x27;fy&#x27;, &#x27;Frisian&#x27;),
+ (&#x27;ga&#x27;, &#x27;Irish&#x27;),
+ (&#x27;gd&#x27;, &#x27;Scottish Gaelic&#x27;),
+ (&#x27;gl&#x27;, &#x27;Galician&#x27;),
+ (&#x27;he&#x27;, &#x27;Hebrew&#x27;),
+ (&#x27;hi&#x27;, &#x27;Hindi&#x27;),
+ (&#x27;hr&#x27;, &#x27;Croatian&#x27;),
+ (&#x27;hsb&#x27;, &#x27;Upper Sorbian&#x27;),
+ (&#x27;hu&#x27;, &#x27;Hungarian&#x27;),
+ (&#x27;hy&#x27;, &#x27;Armenian&#x27;),
+ (&#x27;ia&#x27;, &#x27;Interlingua&#x27;),
+ (&#x27;id&#x27;, &#x27;Indonesian&#x27;),
+ (&#x27;ig&#x27;, &#x27;Igbo&#x27;),
+ (&#x27;io&#x27;, &#x27;Ido&#x27;),
+ (&#x27;is&#x27;, &#x27;Icelandic&#x27;),
+ (&#x27;it&#x27;, &#x27;Italian&#x27;),
+ (&#x27;ja&#x27;, &#x27;Japanese&#x27;),
+ (&#x27;ka&#x27;, &#x27;Georgian&#x27;),
+ (&#x27;kab&#x27;, &#x27;Kabyle&#x27;),
+ (&#x27;kk&#x27;, &#x27;Kazakh&#x27;),
+ (&#x27;km&#x27;, &#x27;Khmer&#x27;),
+ (&#x27;kn&#x27;, &#x27;Kannada&#x27;),
+ (&#x27;ko&#x27;, &#x27;Korean&#x27;),
+ (&#x27;ky&#x27;, &#x27;Kyrgyz&#x27;),
+ (&#x27;lb&#x27;, &#x27;Luxembourgish&#x27;),
+ (&#x27;lt&#x27;, &#x27;Lithuanian&#x27;),
+ (&#x27;lv&#x27;, &#x27;Latvian&#x27;),
+ (&#x27;mk&#x27;, &#x27;Macedonian&#x27;),
+ (&#x27;ml&#x27;, &#x27;Malayalam&#x27;),
+ (&#x27;mn&#x27;, &#x27;Mongolian&#x27;),
+ (&#x27;mr&#x27;, &#x27;Marathi&#x27;),
+ (&#x27;ms&#x27;, &#x27;Malay&#x27;),
+ (&#x27;my&#x27;, &#x27;Burmese&#x27;),
+ (&#x27;nb&#x27;, &#x27;Norwegian Bokmål&#x27;),
+ (&#x27;ne&#x27;, &#x27;Nepali&#x27;),
+ (&#x27;nl&#x27;, &#x27;Dutch&#x27;),
+ (&#x27;nn&#x27;, &#x27;Norwegian Nynorsk&#x27;),
+ (&#x27;os&#x27;, &#x27;Ossetic&#x27;),
+ (&#x27;pa&#x27;, &#x27;Punjabi&#x27;),
+ (&#x27;pl&#x27;, &#x27;Polish&#x27;),
+ (&#x27;pt&#x27;, &#x27;Portuguese&#x27;),
+ (&#x27;pt-br&#x27;, &#x27;Brazilian Portuguese&#x27;),
+ (&#x27;ro&#x27;, &#x27;Romanian&#x27;),
+ (&#x27;ru&#x27;, &#x27;Russian&#x27;),
+ (&#x27;sk&#x27;, &#x27;Slovak&#x27;),
+ (&#x27;sl&#x27;, &#x27;Slovenian&#x27;),
+ (&#x27;sq&#x27;, &#x27;Albanian&#x27;),
+ (&#x27;sr&#x27;, &#x27;Serbian&#x27;),
+ (&#x27;sr-latn&#x27;, &#x27;Serbian Latin&#x27;),
+ (&#x27;sv&#x27;, &#x27;Swedish&#x27;),
+ (&#x27;sw&#x27;, &#x27;Swahili&#x27;),
+ (&#x27;ta&#x27;, &#x27;Tamil&#x27;),
+ (&#x27;te&#x27;, &#x27;Telugu&#x27;),
+ (&#x27;tg&#x27;, &#x27;Tajik&#x27;),
+ (&#x27;th&#x27;, &#x27;Thai&#x27;),
+ (&#x27;tk&#x27;, &#x27;Turkmen&#x27;),
+ (&#x27;tr&#x27;, &#x27;Turkish&#x27;),
+ (&#x27;tt&#x27;, &#x27;Tatar&#x27;),
+ (&#x27;udm&#x27;, &#x27;Udmurt&#x27;),
+ (&#x27;uk&#x27;, &#x27;Ukrainian&#x27;),
+ (&#x27;ur&#x27;, &#x27;Urdu&#x27;),
+ (&#x27;uz&#x27;, &#x27;Uzbek&#x27;),
+ (&#x27;vi&#x27;, &#x27;Vietnamese&#x27;),
+ (&#x27;zh-hans&#x27;, &#x27;Simplified Chinese&#x27;),
+ (&#x27;zh-hant&#x27;, &#x27;Traditional Chinese&#x27;)]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGES_BIDI</td>
+          <td class="code"><pre>[&#x27;he&#x27;, &#x27;ar&#x27;, &#x27;ar-dz&#x27;, &#x27;ckb&#x27;, &#x27;fa&#x27;, &#x27;ur&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_CODE</td>
+          <td class="code"><pre>&#x27;en-us&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_AGE</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_HTTPONLY</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_NAME</td>
+          <td class="code"><pre>&#x27;django_language&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_PATH</td>
+          <td class="code"><pre>&#x27;/&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_SAMESITE</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_SECURE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOCALE_PATHS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGGING</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGGING_CONFIG</td>
+          <td class="code"><pre>&#x27;logging.config.dictConfig&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGIN_REDIRECT_URL</td>
+          <td class="code"><pre>&#x27;/accounts/profile/&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGIN_URL</td>
+          <td class="code"><pre>&#x27;/accounts/login/&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGOUT_REDIRECT_URL</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MANAGERS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MEDIA_ROOT</td>
+          <td class="code"><pre>&#x27;/opt/render/project/src/media&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MEDIA_URL</td>
+          <td class="code"><pre>&#x27;/media/&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MESSAGE_STORAGE</td>
+          <td class="code"><pre>&#x27;django.contrib.messages.storage.fallback.FallbackStorage&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MIDDLEWARE</td>
+          <td class="code"><pre>[&#x27;django.middleware.security.SecurityMiddleware&#x27;,
+ &#x27;django.contrib.sessions.middleware.SessionMiddleware&#x27;,
+ &#x27;django.middleware.common.CommonMiddleware&#x27;,
+ &#x27;django.middleware.csrf.CsrfViewMiddleware&#x27;,
+ &#x27;django.contrib.auth.middleware.AuthenticationMiddleware&#x27;,
+ &#x27;django.contrib.messages.middleware.MessageMiddleware&#x27;,
+ &#x27;django.middleware.clickjacking.XFrameOptionsMiddleware&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MIGRATION_MODULES</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MONTH_DAY_FORMAT</td>
+          <td class="code"><pre>&#x27;F j&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>NUMBER_GROUPING</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PASSWORD_HASHERS</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PASSWORD_RESET_TIMEOUT</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PREPEND_WWW</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ROOT_URLCONF</td>
+          <td class="code"><pre>&#x27;lsd_django.urls&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECRET_KEY</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECRET_KEY_FALLBACKS</td>
+          <td class="code"><pre>&#x27;********************&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_CONTENT_TYPE_NOSNIFF</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_CROSS_ORIGIN_OPENER_POLICY</td>
+          <td class="code"><pre>&#x27;same-origin&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_HSTS_INCLUDE_SUBDOMAINS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_HSTS_PRELOAD</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_HSTS_SECONDS</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_PROXY_SSL_HEADER</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_REDIRECT_EXEMPT</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_REFERRER_POLICY</td>
+          <td class="code"><pre>&#x27;same-origin&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_SSL_HOST</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_SSL_REDIRECT</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_EMAIL</td>
+          <td class="code"><pre>&#x27;root@localhost&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_CACHE_ALIAS</td>
+          <td class="code"><pre>&#x27;default&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_AGE</td>
+          <td class="code"><pre>1209600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_HTTPONLY</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_NAME</td>
+          <td class="code"><pre>&#x27;sessionid&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_PATH</td>
+          <td class="code"><pre>&#x27;/&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_SAMESITE</td>
+          <td class="code"><pre>&#x27;Lax&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_SECURE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_ENGINE</td>
+          <td class="code"><pre>&#x27;django.contrib.sessions.backends.db&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_EXPIRE_AT_BROWSER_CLOSE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_FILE_PATH</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_SAVE_EVERY_REQUEST</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_SERIALIZER</td>
+          <td class="code"><pre>&#x27;django.contrib.sessions.serializers.JSONSerializer&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SETTINGS_MODULE</td>
+          <td class="code"><pre>&#x27;lsd_django.settings&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SHORT_DATETIME_FORMAT</td>
+          <td class="code"><pre>&#x27;m/d/Y P&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SHORT_DATE_FORMAT</td>
+          <td class="code"><pre>&#x27;m/d/Y&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SIGNING_BACKEND</td>
+          <td class="code"><pre>&#x27;django.core.signing.TimestampSigner&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SILENCED_SYSTEM_CHECKS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_DIRS</td>
+          <td class="code"><pre>[PosixPath(&#x27;/opt/render/project/src/static&#x27;)]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_FINDERS</td>
+          <td class="code"><pre>[&#x27;django.contrib.staticfiles.finders.FileSystemFinder&#x27;,
+ &#x27;django.contrib.staticfiles.finders.AppDirectoriesFinder&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_STORAGE</td>
+          <td class="code"><pre>&#x27;django.contrib.staticfiles.storage.StaticFilesStorage&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATIC_ROOT</td>
+          <td class="code"><pre>&#x27;/opt/render/project/src/staticfiles&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATIC_URL</td>
+          <td class="code"><pre>&#x27;/static/&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STORAGES</td>
+          <td class="code"><pre>{&#x27;default&#x27;: {&#x27;BACKEND&#x27;: &#x27;django.core.files.storage.FileSystemStorage&#x27;},
+ &#x27;staticfiles&#x27;: {&#x27;BACKEND&#x27;: &#x27;django.contrib.staticfiles.storage.StaticFilesStorage&#x27;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEMPLATES</td>
+          <td class="code"><pre>[{&#x27;APP_DIRS&#x27;: True,
+  &#x27;BACKEND&#x27;: &#x27;django.template.backends.django.DjangoTemplates&#x27;,
+  &#x27;DIRS&#x27;: [&#x27;/opt/render/project/src/assets/templates&#x27;],
+  &#x27;OPTIONS&#x27;: {&#x27;context_processors&#x27;: [&#x27;django.template.context_processors.debug&#x27;,
+                                     &#x27;django.template.context_processors.request&#x27;,
+                                     &#x27;django.contrib.auth.context_processors.auth&#x27;,
+                                     &#x27;django.contrib.messages.context_processors.messages&#x27;]}}]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEST_NON_SERIALIZED_APPS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEST_RUNNER</td>
+          <td class="code"><pre>&#x27;django.test.runner.DiscoverRunner&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>THOUSAND_SEPARATOR</td>
+          <td class="code"><pre>&#x27;,&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_FORMAT</td>
+          <td class="code"><pre>&#x27;P&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_INPUT_FORMATS</td>
+          <td class="code"><pre>[&#x27;%H:%M:%S&#x27;, &#x27;%H:%M:%S.%f&#x27;, &#x27;%H:%M&#x27;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_ZONE</td>
+          <td class="code"><pre>&#x27;UTC&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_DEPRECATED_PYTZ</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_I18N</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_L10N</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_THOUSAND_SEPARATOR</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_TZ</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_X_FORWARDED_HOST</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_X_FORWARDED_PORT</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>WSGI_APPLICATION</td>
+          <td class="code"><pre>&#x27;lsd_django.wsgi.application&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>X_FRAME_OPTIONS</td>
+          <td class="code"><pre>&#x27;DENY&#x27;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>YEAR_MONTH_FORMAT</td>
+          <td class="code"><pre>&#x27;F Y&#x27;</pre></td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+</div>
+
+  <div id="explanation">
+    <p>
+      You’re seeing this error because you have <code>DEBUG = True</code> in your
+      Django settings file. Change that to <code>False</code>, and Django will
+      display a standard page generated by the handler for this status code.
+    </p>
+  </div>
+
+</body>
+</html>

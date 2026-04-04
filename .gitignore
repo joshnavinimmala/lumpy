@@ -8,7 +8,7 @@ __pycache__/
 
 # Large Files
 *.zip
-*.h5
+# *.h5
 
 # Local config
 config.js.local
