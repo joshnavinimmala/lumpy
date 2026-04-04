@@ -3,7 +3,7 @@ services:
     name: lumpy-backend
     env: python
     buildCommand: "pip install -r requirements.txt && python manage.py makemigrations lsd_app && python manage.py migrate"
-    startCommand: "gunicorn lsd_django.wsgi:application --bind 0.0.0.0:$PORT"
+    startCommand: "gunicorn lsd_django.wsgi:application --bind 0.0.0.0:$PORT --timeout 120"
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0

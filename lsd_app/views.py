@@ -111,6 +111,7 @@ class DummyHistory:
 history = DummyHistory()
 
 # Generate plots outside the index function
+os.makedirs(os.path.join(settings.BASE_DIR, 'static', 'plots'), exist_ok=True)
 plt.plot(history.history['accuracy'], label='Training Accuracy')
 plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
 plt.title('Model Accuracy over Epochs')
