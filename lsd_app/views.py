@@ -74,9 +74,23 @@ from rest_framework import status
 from .serializers import PredictionResultSerializer
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, decode_predictions, preprocess_input as mobilenet_preprocess
 
-model = load_model("model.keras")
-# Initialize a lightweight pre-trained model for object verification (offline weights may be downloaded on first use)
-verifier_model = MobileNetV2(weights='imagenet')
+model = None
+verifier_model = None
+
+def get_model():
+    global model
+    if model is None:
+        if os.path.exists("model.keras"):
+            model = load_model("model.keras")
+        else:
+            raise FileNotFoundError("model.keras not found")
+    return model
+
+def get_verifier():
+    global verifier_model
+    if verifier_model is None:
+        verifier_model = MobileNetV2(weights='imagenet')
+    return verifier_model
 
 CATTLE_KEYWORDS = [
     'ox', 'bull', 'cow', 'water_buffalo', 'bison', 'bovine', 'calf'
@@ -150,7 +164,7 @@ def verify_is_cattle(img_path):
         img_resized = cv2.resize(img, (224, 224))
         # Preprocess for MobileNetV2
         x = mobilenet_preprocess(np.expand_dims(img_resized, axis=0))
-        preds = verifier_model.predict(x)
+        preds = get_verifier().predict(x)
         decoded = decode_predictions(preds, top=5)[0]
         
         # Check if any of the top 5 predictions are cattle-related
@@ -176,7 +190,7 @@ def predict_image(img_path):
     img = cv2.imread(img_path)
     img = cv2.resize(img, (224, 224))
     img = preprocess_input(np.expand_dims(img, axis=0))
-    preds = model.predict(img)
+    preds = get_model().predict(img)
     return preds[0], CLASS_NAMES[np.argmax(preds)]
 
 

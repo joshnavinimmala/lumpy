@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://10.208.138.106:8000'; // Updated to FastAPI port
+export const API_BASE_URL = 'https://lumpy-b7ix.onrender.com'; // Updated to Render deployment
 
 export const ENDPOINTS = {
   REGISTER: `${API_BASE_URL}/register`,
