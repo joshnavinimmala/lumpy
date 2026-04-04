@@ -80,10 +80,10 @@ verifier_model = None
 def get_model():
     global model
     if model is None:
-        if os.path.exists("model.keras"):
-            model = load_model("model.keras")
+        if os.path.exists("model.h5"):
+            model = load_model("model.h5")
         else:
-            raise FileNotFoundError("model.keras not found")
+            raise FileNotFoundError("model.h5 not found")
     return model
 
 def get_verifier():
