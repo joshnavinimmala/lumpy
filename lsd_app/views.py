@@ -174,12 +174,6 @@ def index1(request):
 
         preds, label = predict_image(img_path)
 
-        # Confusion matrix dummy plot (replace with real test data in practice)
-        cm = confusion_matrix([0, 1], [0, 1])  # dummy example
-        sns.heatmap(cm, annot=True)
-        plt.savefig(os.path.join(settings.BASE_DIR, 'static', 'plots', 'confusion_matrix.png'))
-        plt.close()
-
         return render(request, "users/result.html", {
             "label": label,
             "probabilities": zip(CLASS_NAMES, preds),
