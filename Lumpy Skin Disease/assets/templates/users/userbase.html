@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Lumpy Skin Disease Detector{% endblock %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif"/>
+    <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+
+<body class="main-layout">
+
+
+
+<!-- Header -->
+<header>
+    <div class="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 col-sm-12 logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <h2 style="font-weight:bold; color: #2e7d32;">
+                                    <!-- 🐄 Lumpy Skin Detector -->
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4 text-white" href="#">
+      🐄 Lumpy Skin Detector
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {% block home_block %}{% endblock %}" href="{% url 'UserHome' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index1' %}">Upload & Predict</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'eda' %}">EDA</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-warning fw-semibold" href="{% url 'index' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Block -->
+<br><br><br><br><br>
+{% block contents %}
+{% endblock %}
+<br><br>
+
+<!-- Footer (Optional) -->
+<!-- Add footer content here if needed -->
+
+<!-- JS Scripts -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/plugin.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".fancybox").fancybox({ openEffect: "none", closeEffect: "none" });
+        $(".zoom").hover(
+            function(){ $(this).addClass('transition'); },
+            function(){ $(this).removeClass('transition'); }
+        );
+    });
+</script>
+
+</body>
+</html>

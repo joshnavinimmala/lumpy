@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+pydantic[email]
+python-multipart
+opencv-python
+numpy
+tensorflow
+jinja2

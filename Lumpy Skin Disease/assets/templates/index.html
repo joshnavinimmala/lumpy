@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block 'home_block' %}active{% endblock %}
+
+{% block contents %}
+
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                <div class="content-wrapper">
+  <div class="container">
+    <h1 class="heading text-center">Lumpy Skin Disease Detection: Model Performance</h1>
+
+    < Akogare: DeepSearch
+    <div class="content-section">
+      <h2 class="sub-heading">Understanding Lumpy Skin Disease (LSD)</h2>
+      <p>
+        Cattle are susceptible to a viral infection called Lumpy Skin Disease (LSD), which was first discovered in Africa and is currently spreading to the Middle East, Asia, and some regions of Eastern Europe. Symptoms of the condition include fever, drooling, frequent tearing, and prominent skin nodules.
+      </p>
+      <p>
+        The Neethling virus, which causes LSD, leads to irreversible skin damage in affected cattle. This condition can also result in infertility, stunted growth, miscarriages, a decrease in milk production, and, in extreme circumstances, death.
+      </p>
+
+      <h2 class="sub-heading">Diagnosis and Importance</h2>
+      <p>
+        Diagnosis of LSD can be confirmed through PCR testing, virus isolation, and histopathology analysis. Given the variety of diseases that can harm animals, prompt and accurate diagnosis is essential to mitigate the severe consequences of LSD.
+      </p>
+
+      <h2 class="sub-heading">Proposed Solution</h2>
+      <p>
+        Our approach utilizes advanced deep learning frameworks such as VGG-16, VGG-19, and Inception-v3 for feature extraction, combined with machine learning algorithms for disease detection. When tested on a dataset, this strategy demonstrates significant improvements in feature extraction performance compared to traditional methods like KNN, SVM, NB, ANN, and LR.
+      </p>
+
+      <!-- <h2 class="sub-heading">Model Performance Visualizations</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{% static 'images/accuracy_plot.png' %}" alt="Model Accuracy Plot" class="plot-img">
+        </div>
+        <div class="col-md-6">
+          <img src="{% static 'images/loss_plot.png' %}" alt="Model Loss Plot" class="plot-img">
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="hero-image text-center">
+                   
+                    <!-- <img src="{% static 'images/hello_prakash.webp' %}" alt="Cattle with Lumpy Skin Disease" class="img-fluid rounded shadow"> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Additional scripts for home page if needed
+    $(document).ready(function() {
+        // Animation for features section
+        $('.features-section .card').hover(
+            function() {
+                $(this).addClass('shadow').css('transform', 'translateY(-5px)');
+            },
+            function() {
+                $(this).removeClass('shadow').css('transform', 'translateY(0)');
+            }
+        );
+    });
+</script>
+{% endblock %}

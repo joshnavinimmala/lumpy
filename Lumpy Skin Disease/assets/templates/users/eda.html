@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lumpy Skin Detection | Model Performance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styling -->
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e8f5e9, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-wrapper {
+      padding-top: 100px;
+      padding-bottom: 40px;
+    }
+
+    .plot-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .plot-img:hover {
+      transform: scale(1.03);
+    }
+
+    .heading {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2e7d32;
+      margin-bottom: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4 text-white" href="#">🐄 Lumpy Skin Detector</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'UserHome' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index1' %}">Upload & Predict</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-light" href="{% url 'eda' %}">EDA</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-warning fw-semibold" href="{% url 'index' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container content-wrapper text-center">
+  <h2 class="heading">📊 Model Performance Overview</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{% static 'plots/accuracy.png' %}" class="plot-img" alt="Accuracy Plot">
+      <p><strong>Accuracy Trend:</strong> Training vs. Validation</p>
+    </div>
+    <div class="col-md-6">
+      <img src="{% static 'plots/loss.png' %}" class="plot-img" alt="Loss Plot">
+      <p><strong>Loss Curve:</strong> Detecting Overfitting & Learning Stability</p>
+    </div>
+    <div class="col-md-6">
+      <img src="{% static 'plots/confusion_matrix.png' %}" class="plot-img" alt="Confusion Matrix">
+      <p><strong>Confusion Matrix:</strong> Visualizing True vs. Predicted Labels</p>
+    </div>
+    <div class="col-md-6">
+      <img src="{% static 'plots/roc_curve.png' %}" class="plot-img" alt="ROC Curve">
+      <p><strong>ROC Curve:</strong> Classifier Performance Across Thresholds</p>
+    </div>
+    <div class="col-md-12">
+      <img src="{% static 'plots/class_distribution.png' %}" class="plot-img" alt="Class Distribution">
+      <p><strong>Class Distribution:</strong> Balanced vs. Imbalanced Data</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Lumpy Skin Detector | Powered by Django & Deep Learning
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

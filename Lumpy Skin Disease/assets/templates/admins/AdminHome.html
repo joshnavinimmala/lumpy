@@ -1,0 +1,81 @@
+{% extends 'admins/adminbase.html' %}
+{% block contents %}
+
+<section id="intro" class="container mt-5">
+
+    <!-- Welcome Message -->
+    <div class="text-center mb-4">
+        <h3 style="color:orange; font-weight:bold;">
+            Welcome to Admin Dashboard
+        </h3>
+        <p class="text-muted">
+            Lumpy Skin Disease Detection System
+        </p>
+    </div>
+
+    <!-- About Project -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title" style="color:#28a745;font-weight:bold;">
+                About the System
+            </h5>
+            <p class="card-text">
+                This system uses Deep Learning techniques to detect
+                <strong>Lumpy Skin Disease</strong> in cattle by analyzing skin images.
+                It helps in early identification of the disease, reducing
+                economic losses and improving livestock health management.
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Responsibilities -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title" style="color:#28a745;font-weight:bold;">
+                Admin Responsibilities
+            </h5>
+            <ul>
+                <li>View and manage registered users</li>
+                <li>Monitor disease prediction activities</li>
+                <li>Ensure proper system usage and security</li>
+                <li>Maintain accuracy of the detection system</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="row text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-users fa-2x text-success mb-2"></i>
+                    <h5>Registered Users</h5>
+                    <p class="text-muted">View all system users</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-image fa-2x text-success mb-2"></i>
+                    <h5>Uploaded Images</h5>
+                    <p class="text-muted">Monitor image submissions</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-chart-line fa-2x text-success mb-2"></i>
+                    <h5>Predictions</h5>
+                    <p class="text-muted">Track disease detection results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Database
+db.sqlite3
+
+# Large Files
+*.keras
+*.zip
+*.h5
+
+# Local config
+config.js.local
+.env
+
+# Media/Static
+media/
+staticfiles/
+static/
+
+# OS files
+.DS_Store
+Thumbs.db

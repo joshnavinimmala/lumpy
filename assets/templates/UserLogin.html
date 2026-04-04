@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}User Login{% endblock %}
+{% block user_login %}active{% endblock %}
+{% block topbar_title %}User Login{% endblock %}
+
+{% block contents %}
+<style>
+    /* ── Login page layout ── */
+    .login-page {
+        min-height: calc(100vh - 140px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 16px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Animated background blobs */
+    .login-page::before,
+    .login-page::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: blobFloat 8s ease-in-out infinite alternate;
+    }
+    .login-page::before {
+        width: 420px; height: 420px;
+        background: radial-gradient(circle, rgba(76,175,80,0.10) 0%, transparent 70%);
+        top: -100px; left: -80px;
+    }
+    .login-page::after {
+        width: 340px; height: 340px;
+        background: radial-gradient(circle, rgba(46,125,50,0.09) 0%, transparent 70%);
+        bottom: -80px; right: -60px;
+        animation-delay: -4s;
+    }
+    @keyframes blobFloat {
+        from { transform: translate(0,0) scale(1); }
+        to   { transform: translate(20px, 15px) scale(1.06); }
+    }
+
+    /* ── Card ── */
+    .login-card {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow:
+            0 4px 6px rgba(0,0,0,0.04),
+            0 16px 48px rgba(46,125,50,0.10),
+            0 0 0 1px rgba(46,125,50,0.07);
+        padding: 48px 44px 44px;
+        width: 100%;
+        max-width: 440px;
+        position: relative;
+        z-index: 2;
+        animation: cardIn 0.55s cubic-bezier(.22,.68,0,1.2) both;
+    }
+    @keyframes cardIn {
+        from { opacity: 0; transform: translateY(28px) scale(0.97); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Icon badge */
+    .login-icon-badge {
+        width: 62px; height: 62px;
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+        border-radius: 18px;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 22px;
+        box-shadow: 0 6px 20px rgba(46,125,50,0.32);
+    }
+    .login-icon-badge i { color: #fff; font-size: 1.5rem; }
+
+    /* Heading */
+    .login-card .login-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.65rem;
+        font-weight: 700;
+        color: #1c2b1c;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    .login-card .login-sub {
+        font-size: 0.83rem;
+        color: #7a8c7a;
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    /* Form fields */
+    .field-group {
+        margin-bottom: 20px;
+    }
+    .field-group label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #3a4e3a;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    .field-wrap {
+        position: relative;
+    }
+    .field-wrap .field-icon {
+        position: absolute;
+        left: 14px; top: 50%;
+        transform: translateY(-50%);
+        color: #a0b4a0;
+        font-size: 0.9rem;
+        pointer-events: none;
+        transition: color 0.25s;
+    }
+    .field-wrap input {
+        width: 100%;
+        padding: 12px 14px 12px 40px;
+        border: 1.5px solid #d8e8d8;
+        border-radius: 12px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.92rem;
+        color: #1c2b1c;
+        background: #fafcfa;
+        transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+        outline: none;
+        box-sizing: border-box;
+    }
+    .field-wrap input::placeholder { color: #b0c0b0; }
+    .field-wrap input:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 0 4px rgba(76,175,80,0.10);
+        background: #fff;
+    }
+    .field-wrap input:focus + .field-icon,
+    .field-wrap:focus-within .field-icon { color: #2e7d32; }
+
+    /* Password toggle */
+    .toggle-pw {
+        position: absolute;
+        right: 14px; top: 50%;
+        transform: translateY(-50%);
+        background: none; border: none;
+        color: #a0b4a0; cursor: pointer;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+        padding: 0;
+    }
+    .toggle-pw:hover { color: #2e7d32; }
+
+    /* Submit button */
+    .btn-login {
+        width: 100%;
+        padding: 13px;
+        background: linear-gradient(135deg, #2e7d32, #43a047);
+        border: none;
+        border-radius: 12px;
+        color: #fff;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        box-shadow: 0 4px 18px rgba(46,125,50,0.30);
+        transition: all 0.25s ease;
+        margin-top: 8px;
+        display: flex; align-items: center; justify-content: center; gap: 9px;
+    }
+    .btn-login:hover {
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(46,125,50,0.38);
+    }
+    .btn-login:active { transform: translateY(0); }
+
+    /* Divider */
+    .login-divider {
+        display: flex; align-items: center; gap: 12px;
+        margin: 24px 0;
+    }
+    .login-divider span {
+        flex: 1;
+        height: 1px;
+        background: #e4ede4;
+    }
+    .login-divider p {
+        font-size: 0.75rem;
+        color: #a0b4a0;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    /* Register link */
+    .register-prompt {
+        text-align: center;
+        font-size: 0.84rem;
+        color: #7a8c7a;
+    }
+    .register-prompt a {
+        color: #2e7d32;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .register-prompt a:hover { color: #1b5e20; text-decoration: underline; }
+
+    /* Error message */
+    .login-error {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 10px;
+        padding: 11px 14px;
+        font-size: 0.83rem;
+        color: #b91c1c;
+        margin-bottom: 18px;
+        display: flex; align-items: center; gap: 9px;
+    }
+
+    @media (max-width: 480px) {
+        .login-card { padding: 36px 24px 32px; }
+    }
+</style>
+
+<div class="login-page">
+    <div class="login-card">
+
+        <!-- Icon -->
+        <div class="login-icon-badge">
+            <i class="fas fa-user"></i>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="login-title">Welcome Back</h1>
+        <p class="login-sub">Sign in to access the detection system</p>
+
+        <!-- Error (Django messages hook) -->
+        {% if messages %}
+            {% for message in messages %}
+            <div class="login-error">
+                <i class="fas fa-exclamation-circle"></i>
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Form -->
+        <form action="{% url 'UserLoginCheck' %}" method="POST" autocomplete="off">
+            {% csrf_token %}
+
+            <div class="field-group">
+                <label for="loginid">Login ID</label>
+                <div class="field-wrap">
+                    <input
+                        type="text"
+                        id="loginid"
+                        name="loginid"
+                        placeholder="Enter your login ID"
+                        required
+                        autocomplete="username"
+                    >
+                    <i class="fas fa-id-badge field-icon"></i>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="pswd">Password</label>
+                <div class="field-wrap">
+                    <input
+                        type="password"
+                        id="pswd"
+                        name="pswd"
+                        placeholder="Enter your password"
+                        required
+                        autocomplete="current-password"
+                    >
+                    <i class="fas fa-lock field-icon"></i>
+                    <button type="button" class="toggle-pw" id="togglePw" aria-label="Show password">
+                        <i class="fas fa-eye" id="togglePwIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+            </button>
+        </form>
+
+        <!-- Divider + register -->
+        <div class="login-divider">
+            <span></span><p>Don't have an account?</p><span></span>
+        </div>
+        <p class="register-prompt">
+            <a href="{% url 'UserRegister' %}">
+                <i class="fas fa-user-plus me-1"></i>Create a new account
+            </a>
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Password visibility toggle
+    document.getElementById('togglePw').addEventListener('click', function () {
+        const input = document.getElementById('pswd');
+        const icon  = document.getElementById('togglePwIcon');
+        const isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        icon.classList.toggle('fa-eye',      !isHidden);
+        icon.classList.toggle('fa-eye-slash', isHidden);
+    });
+</script>
+{% endblock %}

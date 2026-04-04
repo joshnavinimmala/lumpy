@@ -1,0 +1,387 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block topbar_title %}Create Account{% endblock %}
+
+{% block contents %}
+<style>
+    .register-page {
+        min-height: calc(100vh - 140px);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 40px 16px 60px;
+        position: relative;
+        overflow: hidden;
+    }
+    .register-page::before {
+        content: '';
+        position: absolute;
+        width: 500px; height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(76,175,80,0.07) 0%, transparent 70%);
+        top: -120px; right: -100px;
+        pointer-events: none;
+        animation: blobFloat 9s ease-in-out infinite alternate;
+    }
+    @keyframes blobFloat {
+        from { transform: translate(0,0) scale(1); }
+        to   { transform: translate(20px,15px) scale(1.06); }
+    }
+
+    .register-card {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow:
+            0 4px 6px rgba(0,0,0,0.04),
+            0 16px 48px rgba(46,125,50,0.09),
+            0 0 0 1px rgba(46,125,50,0.07);
+        padding: 48px 44px 44px;
+        width: 100%;
+        max-width: 560px;
+        position: relative;
+        z-index: 2;
+        animation: cardIn 0.55s cubic-bezier(.22,.68,0,1.2) both;
+    }
+    @keyframes cardIn {
+        from { opacity: 0; transform: translateY(28px) scale(0.97); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .register-icon-badge {
+        width: 62px; height: 62px;
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+        border-radius: 18px;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 22px;
+        box-shadow: 0 6px 20px rgba(46,125,50,0.32);
+    }
+    .register-icon-badge i { color: #fff; font-size: 1.5rem; }
+
+    .register-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.65rem;
+        font-weight: 700;
+        color: #1c2b1c;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    .register-sub {
+        font-size: 0.83rem;
+        color: #7a8c7a;
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    /* Section divider label */
+    .form-section-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #a0b4a0;
+        margin: 24px 0 14px;
+        display: flex; align-items: center; gap: 10px;
+    }
+    .form-section-label::after {
+        content: '';
+        flex: 1; height: 1px;
+        background: #e4ede4;
+    }
+    .form-section-label:first-of-type { margin-top: 0; }
+
+    /* Two-column grid for compact fields */
+    .fields-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 18px;
+    }
+    .fields-grid .field-group { grid-column: span 1; }
+    .fields-grid .field-group.full { grid-column: span 2; }
+
+    .field-group { margin-bottom: 18px; }
+    .field-group label {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #3a4e3a;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+    }
+    .field-wrap { position: relative; }
+    .field-wrap .field-icon {
+        position: absolute;
+        left: 13px; top: 50%;
+        transform: translateY(-50%);
+        color: #a0b4a0;
+        font-size: 0.82rem;
+        pointer-events: none;
+        transition: color 0.25s;
+    }
+
+    /* Django form widgets rendered via {{ form.field }} inherit these */
+    .field-wrap input,
+    .field-wrap select,
+    .field-wrap textarea,
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+        width: 100%;
+        padding: 11px 13px 11px 38px;
+        border: 1.5px solid #d8e8d8;
+        border-radius: 12px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.9rem;
+        color: #1c2b1c;
+        background: #fafcfa;
+        transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+        outline: none;
+        box-sizing: border-box;
+        appearance: none;
+    }
+    /* Django adds class="form-control" — keep consistent */
+    .field-wrap input.form-control,
+    .field-group input.form-control,
+    .field-group select.form-control,
+    .field-group textarea.form-control {
+        padding: 11px 13px 11px 38px;
+        border: 1.5px solid #d8e8d8;
+        border-radius: 12px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.9rem;
+        color: #1c2b1c;
+        background: #fafcfa;
+        outline: none;
+        box-shadow: none;
+        box-sizing: border-box;
+    }
+    .field-group input.form-control:focus,
+    .field-group select.form-control:focus,
+    .field-group textarea.form-control:focus,
+    .field-wrap input:focus,
+    .field-wrap select:focus,
+    .field-wrap textarea:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 0 4px rgba(76,175,80,0.10);
+        background: #fff;
+    }
+    .field-group textarea.form-control,
+    .field-wrap textarea { padding-top: 11px; resize: vertical; min-height: 80px; }
+    .field-wrap:focus-within .field-icon { color: #2e7d32; }
+
+    /* Password toggle */
+    .toggle-pw {
+        position: absolute;
+        right: 13px; top: 50%;
+        transform: translateY(-50%);
+        background: none; border: none;
+        color: #a0b4a0; cursor: pointer;
+        font-size: 0.83rem;
+        transition: color 0.2s; padding: 0;
+    }
+    .toggle-pw:hover { color: #2e7d32; }
+
+    .btn-register {
+        width: 100%;
+        padding: 13px;
+        background: linear-gradient(135deg, #2e7d32, #43a047);
+        border: none;
+        border-radius: 12px;
+        color: #fff;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        box-shadow: 0 4px 18px rgba(46,125,50,0.30);
+        transition: all 0.25s ease;
+        margin-top: 10px;
+        display: flex; align-items: center; justify-content: center; gap: 9px;
+    }
+    .btn-register:hover {
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(46,125,50,0.38);
+    }
+    .btn-register:active { transform: translateY(0); }
+
+    /* Messages */
+    .form-messages {
+        margin-top: 16px;
+    }
+    .msg-success {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+        border-radius: 10px;
+        padding: 11px 14px;
+        font-size: 0.83rem;
+        color: #166534;
+        display: flex; align-items: center; gap: 9px;
+    }
+    .msg-error {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 10px;
+        padding: 11px 14px;
+        font-size: 0.83rem;
+        color: #b91c1c;
+        display: flex; align-items: center; gap: 9px;
+        margin-bottom: 8px;
+    }
+
+    .login-prompt {
+        text-align: center;
+        margin-top: 22px;
+        font-size: 0.83rem;
+        color: #7a8c7a;
+    }
+    .login-prompt a {
+        color: #2e7d32; font-weight: 700; text-decoration: none; transition: color 0.2s;
+    }
+    .login-prompt a:hover { color: #1b5e20; text-decoration: underline; }
+
+    @media (max-width: 600px) {
+        .register-card { padding: 36px 20px 32px; }
+        .fields-grid { grid-template-columns: 1fr; }
+        .fields-grid .field-group.full { grid-column: span 1; }
+    }
+</style>
+
+<div class="register-page">
+    <div class="register-card">
+
+        <div class="register-icon-badge">
+            <i class="fas fa-user-plus"></i>
+        </div>
+        <h1 class="register-title">Create Account</h1>
+        <p class="register-sub">Join the LSD Detection platform as a registered user</p>
+
+        <form action="{% url 'UserRegisterActions' %}" method="POST" autocomplete="off">
+            {% csrf_token %}
+
+            <!-- Account credentials -->
+            <p class="form-section-label">Account Credentials</p>
+            <div class="fields-grid">
+                <div class="field-group full">
+                    <label for="id_name">Full Name</label>
+                    <div class="field-wrap">
+                        {{ form.name }}
+                        <i class="fas fa-user field-icon"></i>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label for="id_loginid">Login ID</label>
+                    <div class="field-wrap">
+                        {{ form.loginid }}
+                        <i class="fas fa-id-badge field-icon"></i>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label for="id_password">Password</label>
+                    <div class="field-wrap">
+                        {{ form.password }}
+                        <i class="fas fa-lock field-icon"></i>
+                        <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password">
+                            <i class="fas fa-eye" id="togglePwIcon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact info -->
+            <p class="form-section-label">Contact Information</p>
+            <div class="fields-grid">
+                <div class="field-group">
+                    <label for="id_mobile">Mobile</label>
+                    <div class="field-wrap">
+                        {{ form.mobile }}
+                        <i class="fas fa-phone field-icon"></i>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label for="id_email">Email</label>
+                    <div class="field-wrap">
+                        {{ form.email }}
+                        <i class="fas fa-envelope field-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <p class="form-section-label">Location</p>
+            <div class="fields-grid">
+                <div class="field-group full">
+                    <label for="id_locality">Locality</label>
+                    <div class="field-wrap">
+                        {{ form.locality }}
+                        <i class="fas fa-map-marker-alt field-icon"></i>
+                    </div>
+                </div>
+                <div class="field-group full">
+                    <label for="id_address">Address</label>
+                    <div class="field-wrap">
+                        {{ form.address }}
+                        <i class="fas fa-home field-icon"></i>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label for="id_city">City</label>
+                    <div class="field-wrap">
+                        {{ form.city }}
+                        <i class="fas fa-city field-icon"></i>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label for="id_state">State</label>
+                    <div class="field-wrap">
+                        {{ form.state }}
+                        <i class="fas fa-flag field-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden status field -->
+            <div style="display:none;">{{ form.status }}</div>
+
+            <button type="submit" class="btn-register">
+                <i class="fas fa-user-check"></i>
+                Create My Account
+            </button>
+
+            {% if messages %}
+            <div class="form-messages">
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                    <div class="msg-error"><i class="fas fa-exclamation-circle"></i>{{ message }}</div>
+                    {% else %}
+                    <div class="msg-success"><i class="fas fa-check-circle"></i>{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        </form>
+
+        <p class="login-prompt">
+            Already have an account?
+            <a href="{% url 'UserLogin' %}"><i class="fas fa-sign-in-alt me-1"></i>Sign in</a>
+        </p>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('togglePw').addEventListener('click', function () {
+        const pwField = document.querySelector('#id_password, [name="password"]');
+        const icon = document.getElementById('togglePwIcon');
+        if (!pwField) return;
+        const isHidden = pwField.type === 'password';
+        pwField.type = isHidden ? 'text' : 'password';
+        icon.classList.toggle('fa-eye',       !isHidden);
+        icon.classList.toggle('fa-eye-slash',  isHidden);
+    });
+</script>
+{% endblock %}

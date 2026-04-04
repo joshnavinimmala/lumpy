@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}Admin Login{% endblock %}
+{% block 'admin_login' %}active{% endblock %}
+
+{% block contents %}
+<style>
+    /* Ensure navbar from base.html is styled */
+    .navbar {
+        background: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #2e7d32;
+        text-transform: uppercase;
+    }
+
+    .navbar-nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    .navbar-nav a {
+        color: #2e7d32;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav a:hover {
+        color: #1b5e20;
+    }
+
+    .navbar-nav a.active {
+        border-bottom: 2px solid #2e7d32;
+        padding-bottom: 5px;
+    }
+
+    /* Contact Section */
+    .contact {
+        padding: 100px 0 60px 0;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Subtle cow pattern background */
+    .contact::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://www.transparenttextures.com/patterns/cow-pattern.png') repeat;
+        opacity: 0.05;
+        z-index: 0;
+    }
+
+    .login-card {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 450px;
+        width: 100%;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+    }
+
+    .login-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .login-card legend {
+        font-size: 2rem;
+        color: #2e7d32;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 12px;
+        margin-bottom: 20px;
+        transition: border-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-control:focus {
+        border-color: #2e7d32;
+        box-shadow: 0 0 8px rgba(46, 125, 50, 0.2);
+        outline: none;
+    }
+
+    .btn-login {
+        background: #2e7d32;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        color: white;
+        width: 100%;
+        transition: background 0.3s ease;
+    }
+
+    .btn-login:hover {
+        background: #1b5e20;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    /* Larger cow icon above the form */
+    .login-card::before {
+        content: url('https://img.icons8.com/ios-filled/50/2e7d32/cow.png');
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .login-card {
+            padding: 20px;
+        }
+
+        .contact {
+            padding: 80px 0 30px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.2rem;
+        }
+
+        .navbar-nav {
+            gap: 10px;
+        }
+
+        .navbar-nav a {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<!-- Contact Section -->
+<div id="contact" class="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10">
+                <div class="login-card">
+                    <form action="{% url 'AdminLoginCheck' %}" method="POST">
+                        {% csrf_token %}
+                        <legend>Admin Login</legend>
+                        <div class="form-group">
+                            <label for="loginid">Login ID</label>
+                            <input class="form-control" placeholder="Enter your login ID" type="text" name="loginid" id="loginid" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pswd">Password</label>
+                            <input class="form-control" placeholder="Enter your password" type="password" name="pswd" id="pswd" required>
+                        </div>
+                        <button type="submit" class="btn btn-login">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact Section -->
+
+{% endblock %}

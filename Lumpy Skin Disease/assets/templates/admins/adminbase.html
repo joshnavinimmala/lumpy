@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Admin | Lumpy Skin Disease Detection{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Custom Style -->
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --dark-color: #343a40;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 70px;
+        }
+
+        /* Loader */
+        .loader_bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader_bg.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s;
+        }
+
+        .loader img {
+            width: 80px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        .menu-area-main {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-area-main li {
+            margin-left: 25px;
+        }
+
+        .menu-area-main li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .menu-area-main li a:hover,
+        .menu-area-main li.active a {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+        .copyright {
+            background: rgba(0,0,0,0.2);
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Loader -->
+<div class="loader_bg">
+    <div class="loader">
+        <img src="{% static 'images/loading.gif' %}" alt="Loading">
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="logo">
+                        <h2>
+                            <span>Lumpy Skin Detection</span> Admin
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <ul class="menu-area-main">
+                        <li><a href="{% url 'AdminHome' %}"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="{% url 'RegisterUsersView' %}"><i class="fas fa-users"></i> Users</a></li>
+                        <li><a href="{% url 'index' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mt-4">
+    {% block contents %}
+    {% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+            <!-- About -->
+            <div class="col-md-4 mb-4">
+                <h5>About Admin</h5>
+                <p>
+                    Admin panel for managing users and monitoring
+                    Lumpy Skin Disease Detection activities.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4 mb-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'AdminHome' %}" class="text-white-50">Home</a></li>
+                    <li><a href="{% url 'RegisterUsersView' %}" class="text-white-50">User Details</a></li>
+                </ul>
+            </div>
+
+            <!-- Social -->
+            <div class="col-md-4 mb-4">
+                <h5>Connect</h5>
+                <a href="#" class="text-white mr-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white mr-3"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© {% now "Y" %} Lumpy Skin Disease Detection | Admin Panel</p>
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+<script>
+    window.addEventListener('load', function () {
+        const loader = document.querySelector('.loader_bg');
+        loader.classList.add('hidden');
+        setTimeout(() => loader.style.display = 'none', 500);
+    });
+</script>
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

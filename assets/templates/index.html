@@ -1,0 +1,399 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home — Lumpy Skin Disease Detection{% endblock %}
+{% block home_block %}active{% endblock %}
+{% block topbar_title %}Dashboard — Home{% endblock %}
+
+{% block contents %}
+
+<style>
+    /* ── Page-level styles (scoped so they don't bleed to other pages) ── */
+
+    /* Hero banner */
+    .hero-banner {
+        background:
+            linear-gradient(135deg, rgba(27,94,32,0.92) 0%, rgba(46,125,50,0.80) 50%, rgba(27,94,32,0.88) 100%),
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ccircle cx='60' cy='60' r='40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3Ccircle cx='60' cy='60' r='25' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3Cellipse cx='20' cy='20' rx='14' ry='20' fill='none' stroke='rgba(255,255,255,0.035)' stroke-width='1' transform='rotate(-25 20 20)'/%3E%3Cellipse cx='100' cy='100' rx='12' ry='18' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1' transform='rotate(15 100 100)'/%3E%3C/svg%3E");
+        border-radius: 20px;
+        padding: 52px 48px;
+        margin-bottom: 32px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeSlideUp 0.6s ease both;
+    }
+    .hero-banner::after {
+        content: '';
+        position: absolute;
+        right: -40px; bottom: -40px;
+        width: 260px; height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(165,214,167,0.12) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .hero-banner .hero-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255,255,255,0.12);
+        color: #a5d6a7;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 30px;
+        border: 1px solid rgba(165,214,167,0.25);
+        margin-bottom: 18px;
+    }
+    .hero-banner h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.6rem, 3vw, 2.5rem);
+        color: #fff;
+        line-height: 1.3;
+        margin-bottom: 14px;
+        font-weight: 700;
+    }
+    .hero-banner h1 em {
+        font-style: normal;
+        color: #a5d6a7;
+    }
+    .hero-banner p.hero-sub {
+        color: rgba(255,255,255,0.72);
+        font-size: 0.97rem;
+        line-height: 1.7;
+        max-width: 560px;
+        margin-bottom: 28px;
+    }
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: #fff;
+        color: #1b5e20;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 12px 26px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+        transition: all 0.25s ease;
+    }
+    .hero-cta:hover {
+        background: #a5d6a7;
+        color: #1b5e20;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(0,0,0,0.22);
+    }
+
+    /* Stat chips */
+    .hero-stats {
+        display: flex;
+        gap: 18px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+    }
+    .stat-chip {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 12px;
+        padding: 12px 20px;
+        color: #fff;
+        backdrop-filter: blur(4px);
+    }
+    .stat-chip .val {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #a5d6a7;
+        display: block;
+        line-height: 1;
+    }
+    .stat-chip .lbl {
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.55);
+        margin-top: 3px;
+        display: block;
+    }
+
+    /* ── Section cards ── */
+    .section-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+        border: 1px solid rgba(46,125,50,0.07);
+        animation: fadeSlideUp 0.6s ease both;
+    }
+    .section-card:nth-child(2) { animation-delay: 0.1s; }
+    .section-card:nth-child(3) { animation-delay: 0.2s; }
+
+    .section-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #e8f5e9;
+        color: #2e7d32;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+    }
+    .section-card h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        color: #1c2b1c;
+        margin-bottom: 14px;
+        font-weight: 700;
+    }
+    .section-card p {
+        color: #4a5e4a;
+        font-size: 0.93rem;
+        line-height: 1.75;
+        margin-bottom: 12px;
+    }
+    .section-card p:last-child { margin-bottom: 0; }
+
+    /* Divider line */
+    .content-divider {
+        border: none;
+        border-top: 1px solid #e8f0e8;
+        margin: 20px 0;
+    }
+
+    /* Models grid */
+    .models-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+    }
+    .model-pill {
+        background: linear-gradient(135deg, #f1f8f1, #e8f5e9);
+        border: 1px solid rgba(46,125,50,0.15);
+        border-radius: 12px;
+        padding: 16px 14px;
+        text-align: center;
+        transition: all 0.25s ease;
+        cursor: default;
+    }
+    .model-pill:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(46,125,50,0.12);
+        border-color: rgba(46,125,50,0.3);
+    }
+    .model-pill .model-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1b5e20;
+        display: block;
+    }
+    .model-pill .model-type {
+        font-size: 0.7rem;
+        color: #6b7c6b;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-top: 4px;
+        display: block;
+    }
+
+    /* Diagnosis steps timeline */
+    .diagnosis-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 18px;
+    }
+    .diag-step {
+        display: flex;
+        gap: 16px;
+        position: relative;
+        padding-bottom: 22px;
+    }
+    .diag-step:last-child { padding-bottom: 0; }
+    .diag-step:last-child .step-line { display: none; }
+    .step-dot-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    .step-dot {
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        box-shadow: 0 3px 10px rgba(46,125,50,0.3);
+    }
+    .step-line {
+        width: 2px;
+        flex: 1;
+        background: linear-gradient(to bottom, #4caf50, transparent);
+        margin-top: 4px;
+        min-height: 20px;
+    }
+    .step-body h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #1c2b1c;
+        margin-bottom: 4px;
+    }
+    .step-body p {
+        font-size: 0.83rem;
+        color: #6b7c6b;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeSlideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .hero-banner { padding: 32px 24px; }
+        .hero-stats { gap: 12px; }
+        .models-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+</style>
+
+<!-- ═══════════ HERO BANNER ═══════════ -->
+<div class="hero-banner">
+    <h1>
+        Detecting <em>Lumpy Skin Disease</em><br>
+        in Cattle with Deep Learning
+    </h1>
+    <p class="hero-sub">
+        Our system leverages state-of-the-art convolutional neural networks — VGG-16, VGG-19, and Inception-v3 — to identify LSD from visual symptoms with higher accuracy than conventional diagnostic methods.
+    </p>
+    <a href="{% url 'UserLogin' %}" class="hero-cta">
+        <i class="fas fa-microscope"></i>
+        Start Detection
+    </a>
+
+    <div class="hero-stats">
+        <div class="stat-chip">
+            <span class="val">VGG-16</span>
+            <span class="lbl">Primary Model</span>
+        </div>
+        <div class="stat-chip">
+            <span class="val">3</span>
+            <span class="lbl">DL Frameworks</span>
+        </div>
+        <div class="stat-chip">
+            <span class="val">PCR+</span>
+            <span class="lbl">Confirmed Labels</span>
+        </div>
+        <div class="stat-chip">
+            <span class="val">Early</span>
+            <span class="lbl">Detection Focus</span>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ ABOUT LSD ═══════════ -->
+<div class="section-card">
+    <span class="section-tag"><i class="fas fa-info-circle"></i> About the Disease</span>
+    <h2>Understanding Lumpy Skin Disease (LSD)</h2>
+    <p>
+        Lumpy Skin Disease is a viral infection affecting cattle, first discovered in Africa and now spreading across the Middle East, Asia, and parts of Eastern Europe. It is caused by the <strong>Neethling virus</strong>, a member of the Capripoxvirus genus, and manifests as fever, excessive drooling, nasal discharge, and prominent nodular lesions across the skin.
+    </p>
+    <hr class="content-divider">
+    <p>
+        Beyond visible lesions, LSD inflicts serious economic consequences — infertility, stunted growth, miscarriages, a sharp drop in milk production, and in severe cases, death. The irreversible skin damage reduces hide quality, further compounding livestock losses for farmers.
+    </p>
+</div>
+
+<!-- ═══════════ DIAGNOSIS ═══════════ -->
+<div class="section-card">
+    <span class="section-tag"><i class="fas fa-stethoscope"></i> Diagnosis Methods</span>
+    <h2>Confirming LSD — Clinical Steps</h2>
+
+    <div class="diagnosis-steps">
+        <div class="diag-step">
+            <div class="step-dot-wrap">
+                <div class="step-dot"><i class="fas fa-eye"></i></div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+                <h4>Visual Symptom Assessment</h4>
+                <p>Identification of skin nodules, fever, and mucous membrane discharge during field examination.</p>
+            </div>
+        </div>
+        <div class="diag-step">
+            <div class="step-dot-wrap">
+                <div class="step-dot"><i class="fas fa-dna"></i></div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+                <h4>PCR Testing</h4>
+                <p>Polymerase chain reaction testing on tissue or blood samples to confirm viral presence.</p>
+            </div>
+        </div>
+        <div class="diag-step">
+            <div class="step-dot-wrap">
+                <div class="step-dot"><i class="fas fa-vial"></i></div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+                <h4>Virus Isolation &amp; Histopathology</h4>
+                <p>Laboratory analysis of cell cultures and tissue samples to characterize the infection stage and severity.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ OUR SOLUTION ═══════════ -->
+<div class="section-card">
+    <span class="section-tag"><i class="fas fa-brain"></i> Our Approach</span>
+    <h2>Deep Learning for Faster Detection</h2>
+    <p>
+        Our pipeline combines powerful convolutional feature extractors with classical machine learning classifiers to deliver reliable, fast diagnoses — even in resource-constrained field conditions. This hybrid approach significantly outperforms standalone traditional methods such as KNN, SVM, NB, ANN, and LR.
+    </p>
+
+    <div class="models-grid">
+        <div class="model-pill">
+            <span class="model-name">VGG-16</span>
+            <span class="model-type">Feature Extraction</span>
+        </div>
+        <div class="model-pill">
+            <span class="model-name">VGG-19</span>
+            <span class="model-type">Feature Extraction</span>
+        </div>
+        <div class="model-pill">
+            <span class="model-name">Inception-v3</span>
+            <span class="model-type">Feature Extraction</span>
+        </div>
+        <div class="model-pill">
+            <span class="model-name">SVM / KNN</span>
+            <span class="model-type">Classifier Layer</span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        // Subtle entrance for stat chips with stagger
+        $('.stat-chip').each(function (i) {
+            $(this).css({ opacity: 0, transform: 'translateY(10px)' });
+            setTimeout(() => {
+                $(this).animate({ opacity: 1 }, 300);
+                $(this).css('transform', 'translateY(0)');
+            }, 400 + i * 80);
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lumpy Skin Detection | Model Performance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styling -->
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e8f5e9, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-wrapper {
+      padding-top: 100px;
+      padding-bottom: 40px;
+    }
+
+    .plot-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .plot-img:hover {
+      transform: scale(1.03);
+    }
+
+    .heading {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2e7d32;
+      margin-bottom: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4 text-white" href="#">🐄 Lumpy Skin Detector</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'UserHome' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index1' %}">Upload & Predict</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-light" href="{% url 'eda' %}">EDA</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-warning fw-semibold" href="{% url 'index' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+ <div class="content-wrapper">
+  <div class="container">
+    <h1 class="heading text-center">Lumpy Skin Disease Detection: Model Performance</h1>
+
+    < Akogare: DeepSearch
+    <div class="content-section">
+      <h2 class="sub-heading">Understanding Lumpy Skin Disease (LSD)</h2>
+      <p>
+        Cattle are susceptible to a viral infection called Lumpy Skin Disease (LSD), which was first discovered in Africa and is currently spreading to the Middle East, Asia, and some regions of Eastern Europe. Symptoms of the condition include fever, drooling, frequent tearing, and prominent skin nodules.
+      </p>
+      <p>
+        The Neethling virus, which causes LSD, leads to irreversible skin damage in affected cattle. This condition can also result in infertility, stunted growth, miscarriages, a decrease in milk production, and, in extreme circumstances, death.
+      </p>
+
+      <h2 class="sub-heading">Diagnosis and Importance</h2>
+      <p>
+        Diagnosis of LSD can be confirmed through PCR testing, virus isolation, and histopathology analysis. Given the variety of diseases that can harm animals, prompt and accurate diagnosis is essential to mitigate the severe consequences of LSD.
+      </p>
+
+      <h2 class="sub-heading">Proposed Solution</h2>
+      <p>
+        Our approach utilizes advanced deep learning frameworks such as VGG-16, VGG-19, and Inception-v3 for feature extraction, combined with machine learning algorithms for disease detection. When tested on a dataset, this strategy demonstrates significant improvements in feature extraction performance compared to traditional methods like KNN, SVM, NB, ANN, and LR.
+      </p>
+
+      <!-- <h2 class="sub-heading">Model Performance Visualizations</h2> -->
+      <!-- <div class="row">
+        <div class="col-md-6">
+          <img src="{% static 'images/accuracy_plot.png' %}" alt="Model Accuracy Plot" class="plot-img">
+        </div>
+        <div class="col-md-6">
+          <img src="{% static 'images/loss_plot.png' %}" alt="Model Loss Plot" class="plot-img">
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!--  -->
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Lumpy Skin Detector | Powered by Django & Deep Learning
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

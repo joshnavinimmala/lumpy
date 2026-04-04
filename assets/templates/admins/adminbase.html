@@ -1,0 +1,511 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Admin | Lumpy Skin Disease Detection{% endblock %}</title>
+
+    <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <style>
+        :root {
+            --sidebar-width:  260px;
+            --primary:        #5d4037;
+            --primary-light:  #8d6e63;
+            --primary-dark:   #3e2723;
+            --accent:         #d7ccc8;
+            --green:          #2e7d32;
+            --green-light:    #4caf50;
+            --bg-main:        #f5f0ee;
+            --sidebar-bg:     #1a1210;
+            --sidebar-text:   rgba(255,255,255,0.82);
+            --sidebar-hover:  rgba(141,110,99,0.20);
+            --sidebar-active: rgba(141,110,99,0.32);
+            --card-bg:        #ffffff;
+            --text-main:      #1c1210;
+            --text-muted:     #7a6e6a;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-main);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+            color: var(--text-main);
+        }
+
+        /* ── LOADER ── */
+        .loader_bg {
+            position: fixed; inset: 0;
+            background: var(--sidebar-bg);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .loader_bg.hidden { opacity: 0; visibility: hidden; }
+        .loader img { width: 70px; filter: drop-shadow(0 0 12px var(--primary-light)); }
+        .loader-text {
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: pulse 1.4s ease infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            width: var(--sidebar-width);
+            min-height: 100vh;
+            position: fixed;
+            left: 0; top: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 200;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+
+            background-color: var(--sidebar-bg);
+            background-image:
+                radial-gradient(ellipse at 80% 10%,  rgba(141,110,99,0.14) 0%, transparent 60%),
+                radial-gradient(ellipse at 15% 88%,  rgba(93,64,55,0.18)  0%, transparent 55%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cellipse cx='45' cy='22' rx='14' ry='20' fill='none' stroke='rgba(141,110,99,0.07)' stroke-width='1.5' transform='rotate(-30 45 22)'/%3E%3Cellipse cx='22' cy='65' rx='11' ry='17' fill='none' stroke='rgba(141,110,99,0.05)' stroke-width='1.5' transform='rotate(20 22 65)'/%3E%3Cellipse cx='70' cy='58' rx='10' ry='15' fill='none' stroke='rgba(141,110,99,0.06)' stroke-width='1.5' transform='rotate(-15 70 58)'/%3E%3C/svg%3E");
+        }
+
+        /* Brand */
+        .sidebar-brand {
+            padding: 28px 24px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            flex-shrink: 0;
+        }
+        .sidebar-brand .brand-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 14px rgba(93,64,55,0.45);
+        }
+        .sidebar-brand .brand-icon i { color: #fff; font-size: 1.2rem; }
+        .sidebar-brand h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #fff;
+            line-height: 1.35;
+            font-weight: 700;
+        }
+        .sidebar-brand h2 span {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        /* Admin badge */
+        .admin-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255,193,7,0.12);
+            border: 1px solid rgba(255,193,7,0.25);
+            color: #ffd54f;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 8px;
+            width: fit-content;
+        }
+
+        /* Nav */
+        .sidebar-nav { flex: 1; padding: 20px 0; overflow-y: auto; }
+        .sidebar-nav::-webkit-scrollbar { width: 4px; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+        .nav-section-label {
+            font-size: 0.63rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.28);
+            padding: 14px 24px 6px;
+            font-weight: 600;
+        }
+
+        .sidebar-nav ul { list-style: none; }
+        .sidebar-nav ul li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 24px;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.25s ease;
+        }
+        .sidebar-nav ul li a .nav-icon {
+            width: 34px; height: 34px;
+            border-radius: 9px;
+            background: rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.82rem;
+            transition: background 0.25s, transform 0.25s;
+        }
+        .sidebar-nav ul li a:hover {
+            background: var(--sidebar-hover);
+            color: #fff;
+            border-left-color: var(--primary-light);
+        }
+        .sidebar-nav ul li a:hover .nav-icon {
+            background: rgba(141,110,99,0.28);
+            transform: scale(1.08);
+        }
+        .sidebar-nav ul li.active > a {
+            background: var(--sidebar-active);
+            color: #fff;
+            border-left-color: var(--primary-light);
+        }
+        .sidebar-nav ul li.active > a .nav-icon { background: rgba(141,110,99,0.32); }
+
+        /* Logout button */
+        .sidebar-logout {
+            padding: 16px 20px 28px;
+            flex-shrink: 0;
+        }
+        .sidebar-logout a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px;
+            background: rgba(211,47,47,0.12);
+            border: 1px solid rgba(211,47,47,0.22);
+            color: #ef9a9a;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+        .sidebar-logout a:hover {
+            background: rgba(211,47,47,0.22);
+            color: #ffcdd2;
+            transform: translateY(-2px);
+        }
+
+        /* Decorative deco */
+        .sidebar-deco {
+            padding: 0 20px 14px;
+            opacity: 0.08;
+            pointer-events: none;
+            text-align: center;
+        }
+        .sidebar-deco svg { width: 100%; max-width: 170px; }
+
+        /* ── MAIN WRAPPER ── */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Topbar */
+        .topbar {
+            background: var(--card-bg);
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+            padding: 14px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .topbar-left { display: flex; align-items: center; gap: 12px; }
+        .topbar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .topbar-badge {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .topbar-right { display: flex; align-items: center; gap: 10px; }
+        .topbar-indicator {
+            width: 8px; height: 8px;
+            background: #ef9a9a;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(211,47,47,0.15);
+            animation: glow 2s ease infinite;
+        }
+        @keyframes glow { 0%,100%{box-shadow:0 0 0 3px rgba(211,47,47,0.15)} 50%{box-shadow:0 0 0 6px rgba(211,47,47,0.06)} }
+        .topbar-status { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+
+        .sidebar-toggle {
+            display: none;
+            background: none; border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            padding: 4px;
+        }
+
+        /* Page content */
+        .page-content { flex: 1; padding: 32px; }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--sidebar-bg);
+            color: rgba(255,255,255,0.55);
+            padding: 22px 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            font-size: 0.8rem;
+        }
+        .footer h6 {
+            font-family: 'Playfair Display', serif;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+        }
+        .footer p { line-height: 1.65; }
+        .footer ul { list-style: none; padding: 0; }
+        .footer ul li { margin-bottom: 6px; }
+        .footer ul li a, .footer-social a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer ul li a:hover, .footer-social a:hover { color: var(--accent); }
+        .footer-social { display: flex; gap: 14px; margin-top: 4px; }
+        .footer-social a { font-size: 0.9rem; transition: color 0.2s, transform 0.2s; }
+        .footer-social a:hover { transform: translateY(-2px); }
+
+        .footer-copyright {
+            background: rgba(0,0,0,0.25);
+            text-align: center;
+            padding: 12px 32px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.35);
+            margin-left: var(--sidebar-width);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 991px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); box-shadow: 6px 0 30px rgba(0,0,0,0.4); }
+            .main-wrapper { margin-left: 0; }
+            .footer-copyright { margin-left: 0; }
+            .sidebar-toggle { display: flex; }
+            .footer { grid-template-columns: 1fr 1fr; }
+            .sidebar-overlay {
+                display: none; position: fixed; inset: 0;
+                background: rgba(0,0,0,0.45); z-index: 199;
+            }
+            .sidebar-overlay.active { display: block; }
+        }
+        @media (max-width: 600px) {
+            .page-content { padding: 20px 16px; }
+            .topbar { padding: 12px 16px; }
+            .footer { grid-template-columns: 1fr; padding: 20px 16px; }
+            .footer-copyright { padding: 12px 16px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Loader -->
+<div class="loader_bg">
+    <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="Loading"></div>
+    <div class="loader-text">Loading Admin&hellip;</div>
+</div>
+
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-shield-alt"></i></div>
+        <h2>
+            LSD Detection
+            <span>Admin Control Panel</span>
+        </h2>
+        <div class="admin-pill"><i class="fas fa-lock" style="font-size:0.55rem;"></i> Admin Access</div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <p class="nav-section-label">Management</p>
+        <ul>
+            <li class="{% block home_block %}{% endblock %}">
+                <a href="{% url 'AdminHome' %}">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="{% block users_block %}{% endblock %}">
+                <a href="{% url 'RegisterUsersView' %}">
+                    <span class="nav-icon"><i class="fas fa-users"></i></span>
+                    Registered Users
+                </a>
+            </li>
+        </ul>
+
+        <p class="nav-section-label">System</p>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">
+                    <span class="nav-icon"><i class="fas fa-globe"></i></span>
+                    Public Site
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Deco -->
+    <div class="sidebar-deco">
+        <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="55" rx="55" ry="20" fill="white"/>
+            <ellipse cx="100" cy="42" rx="32" ry="18" fill="white"/>
+            <ellipse cx="80" cy="30" rx="12" ry="14" fill="white"/>
+            <circle cx="76" cy="24" r="4" fill="white"/>
+            <circle cx="86" cy="22" r="3" fill="white"/>
+            <rect x="60" y="68" width="8" height="14" rx="3" fill="white"/>
+            <rect x="76" y="70" width="8" height="12" rx="3" fill="white"/>
+            <rect x="116" y="70" width="8" height="12" rx="3" fill="white"/>
+            <rect x="132" y="68" width="8" height="14" rx="3" fill="white"/>
+            <path d="M148 45 Q165 38 162 30" stroke="white" stroke-width="4" stroke-linecap="round" fill="none"/>
+        </svg>
+    </div>
+
+    <!-- Logout -->
+    <div class="sidebar-logout">
+        <a href="{% url 'index' %}">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </a>
+    </div>
+
+</aside>
+<!-- ═══════════ END SIDEBAR ═══════════ -->
+
+<!-- ═══════════ MAIN WRAPPER ═══════════ -->
+<div class="main-wrapper">
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span class="topbar-title">{% block topbar_title %}Admin Panel{% endblock %}</span>
+            <span class="topbar-badge">Admin</span>
+        </div>
+        <div class="topbar-right">
+            <div class="topbar-indicator"></div>
+            <span class="topbar-status">Admin Session Active</span>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content">
+        {% block contents %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <h6>About Admin Panel</h6>
+            <p>Manage users and monitor Lumpy Skin Disease Detection system activities from this control panel.</p>
+        </div>
+        <div>
+            <h6>Quick Links</h6>
+            <ul>
+                <li><a href="{% url 'AdminHome' %}">Dashboard</a></li>
+                <li><a href="{% url 'RegisterUsersView' %}">User Details</a></li>
+                <li><a href="{% url 'index' %}">Public Site</a></li>
+            </ul>
+        </div>
+        <div>
+            <h6>Connect</h6>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+
+<!-- JS -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+<script>
+    /* Loader */
+    window.addEventListener('load', function () {
+        const loader = document.querySelector('.loader_bg');
+        loader.classList.add('hidden');
+        setTimeout(() => loader.style.display = 'none', 600);
+    });
+    setTimeout(() => {
+        const loader = document.querySelector('.loader_bg');
+        if (loader && !loader.classList.contains('hidden')) {
+            loader.classList.add('hidden');
+            setTimeout(() => loader.style.display = 'none', 600);
+        }
+    }, 3000);
+
+    /* Sidebar toggle */
+    const sidebar        = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const sidebarToggle  = document.getElementById('sidebarToggle');
+
+    function openSidebar()  { sidebar.classList.add('open'); sidebarOverlay.classList.add('active'); }
+    function closeSidebar() { sidebar.classList.remove('open'); sidebarOverlay.classList.remove('active'); }
+
+    sidebarToggle.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+    sidebarOverlay.addEventListener('click', closeSidebar);
+</script>
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>
