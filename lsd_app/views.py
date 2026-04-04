@@ -87,10 +87,7 @@ def get_model():
     return model
 
 def get_verifier():
-    global verifier_model
-    if verifier_model is None:
-        verifier_model = MobileNetV2(weights='imagenet')
-    return verifier_model
+    return None  # Disabled to save memory on Render
 
 CATTLE_KEYWORDS = [
     'ox', 'bull', 'cow', 'water_buffalo', 'bison', 'bovine', 'calf'
@@ -151,41 +148,8 @@ plt.savefig(os.path.join(settings.BASE_DIR, 'static', 'plots', 'class_distributi
 plt.close()
 
 def verify_is_cattle(img_path):
-    """Checks if the uploaded image contains cattle using MobileNetV2."""
-    try:
-        if not os.path.exists(img_path):
-            print(f"Image path does not exist: {img_path}")
-            return False
-            
-        img = cv2.imread(img_path)
-        if img is None:
-            print(f"Could not read image: {img_path}")
-            return False
-            
-        img_resized = cv2.resize(img, (224, 224))
-        # Preprocess for MobileNetV2
-        x = mobilenet_preprocess(np.expand_dims(img_resized, axis=0))
-        preds = get_verifier().predict(x)
-        decoded = decode_predictions(preds, top=5)[0]
-        
-        # Check if any of the top 5 predictions are cattle-related
-        is_cattle = False
-        for _, label, score in decoded:
-            label_lower = label.lower()
-            if any(k in label_lower for k in CATTLE_KEYWORDS):
-                if score > 0.05: # At least 5% confidence for cattle keywords
-                    print(f"Cattle detected: {label} with confidence {score:.2f}")
-                    is_cattle = True
-                    break
-        
-        if not is_cattle:
-            print(f"No cattle detected. Top predictions: {[d[1] for d in decoded]}")
-            
-        return is_cattle
-    except Exception as e:
-        print(f"Verification error: {e}")
-        # Return False to be safe, requiring valid cattle detection
-        return False
+    """Bypassed to save memory on Render Free Tier."""
+    return True
 
 def predict_image(img_path):
     img = cv2.imread(img_path)
