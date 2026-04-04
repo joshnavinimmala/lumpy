@@ -4,7 +4,7 @@ __pycache__/
 *.pyc
 
 # Database
-db.sqlite3
+# db.sqlite3
 
 # Large Files
 *.zip
