@@ -163,7 +163,7 @@ plt.close()
 
 def verify_is_cattle(img_path):
     try:
-        from tensorflow.keras.applications.mobilenet_v2 import decode_predictions, preprocess_input as mobilenet_preprocess
+        from tensorflow.keras.applications.mobilenet_v2 import preprocess_input as mobilenet_preprocess
         img = cv2.imread(img_path)
         img = cv2.resize(img, (224, 224))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -174,13 +174,13 @@ def verify_is_cattle(img_path):
         interpreter = get_mobilenet_interpreter()
         interpreter.set_tensor(interpreter.get_input_details()[0]['index'], img_array)
         interpreter.invoke()
-        preds = interpreter.get_tensor(interpreter.get_output_details()[0]['index'])
+        preds = interpreter.get_tensor(interpreter.get_output_details()[0]['index'])[0]
 
-        decoded = decode_predictions(preds, top=5)[0]
+        top_5_indices = np.argsort(preds)[-5:][::-1]
+        valid_cattle_indices = {345, 346, 347, 348, 349, 350, 351, 352, 353, 339, 340}
         
-        for _, label, _ in decoded:
-            label = label.lower()
-            if any(keyword in label for keyword in CATTLE_KEYWORDS):
+        for idx in top_5_indices:
+            if idx in valid_cattle_indices:
                 return True
         return False
     except Exception as e:
