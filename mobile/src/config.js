@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://10.196.44.106:8000'; // Local IP for Django server
+export const API_BASE_URL = 'https://lumpy-b7ix.onrender.com'; // Render live URL
 
 export const ENDPOINTS = {
   REGISTER: `${API_BASE_URL}/register`,
@@ -8,3 +8,4 @@ export const ENDPOINTS = {
   ACTIVATE_USER: `${API_BASE_URL}/activate_user`,
   PREDICT: `${API_BASE_URL}/predict`,
 };
+

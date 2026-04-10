@@ -88,7 +88,10 @@ def get_model():
     return model
 
 def get_verifier():
-    return None  # Disabled to save memory on Render
+    global verifier_model
+    if verifier_model is None:
+        verifier_model = MobileNetV2(weights='imagenet')
+    return verifier_model
 
 CATTLE_KEYWORDS = [
     'ox', 'bull', 'cow', 'water_buffalo', 'bison', 'bovine', 'calf'
@@ -149,8 +152,24 @@ plt.savefig(os.path.join(settings.BASE_DIR, 'static', 'plots', 'class_distributi
 plt.close()
 
 def verify_is_cattle(img_path):
-    """Bypassed to save memory on Render Free Tier."""
-    return True
+    try:
+        img = cv2.imread(img_path)
+        img = cv2.resize(img, (224, 224))
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img_array = np.expand_dims(img, axis=0)
+        img_array = mobilenet_preprocess(img_array)
+        
+        preds = get_verifier().predict(img_array)
+        decoded = decode_predictions(preds, top=5)[0]
+        
+        for _, label, _ in decoded:
+            label = label.lower()
+            if any(keyword in label for keyword in CATTLE_KEYWORDS):
+                return True
+        return False
+    except Exception as e:
+        print(f"Error in verification: {e}")
+        return True
 
 def predict_image(img_path):
     img = cv2.imread(img_path)
@@ -167,10 +186,9 @@ def index1(request):
         filename = fs.save(img.name, img)
         img_path = fs.path(filename)
 
-        # Check if the image is actually cattle
         if not verify_is_cattle(img_path):
             return render(request, "users/index.html", {
-                "error": "The uploaded image does not appear to be cattle. Please upload a clear image of a cow or bull."
+                "error": "invalid please give clear and correect image"
             })
 
         preds, label = predict_image(img_path)
@@ -197,11 +215,10 @@ def predict_api(request):
         filename = fs.save(image.name, image)
         image_path = fs.path(filename)
         
-        # Check if the image is actually cattle
         if not verify_is_cattle(image_path):
             return Response({
                 'result': 'Invalid Image',
-                'detail': 'The uploaded image does not appear to be cattle. Please upload a clear image of a cow or bull.',
+                'detail': 'invalid please give clear and correect image',
                 'confidence': 0.0
             }, status=status.HTTP_400_BAD_REQUEST)
             
