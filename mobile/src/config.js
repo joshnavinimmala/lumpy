@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'https://lumpy-b7ix.onrender.com'; // Render live URL
+export const API_BASE_URL = 'https://lumpy-1.onrender.com'; // Render live URL
 
 export const ENDPOINTS = {
   REGISTER: `${API_BASE_URL}/register`,
