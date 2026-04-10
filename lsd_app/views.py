@@ -152,24 +152,9 @@ plt.savefig(os.path.join(settings.BASE_DIR, 'static', 'plots', 'class_distributi
 plt.close()
 
 def verify_is_cattle(img_path):
-    try:
-        img = cv2.imread(img_path)
-        img = cv2.resize(img, (224, 224))
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img_array = np.expand_dims(img, axis=0)
-        img_array = mobilenet_preprocess(img_array)
-        
-        preds = get_verifier().predict(img_array)
-        decoded = decode_predictions(preds, top=5)[0]
-        
-        for _, label, _ in decoded:
-            label = label.lower()
-            if any(keyword in label for keyword in CATTLE_KEYWORDS):
-                return True
-        return False
-    except Exception as e:
-        print(f"Error in verification: {e}")
-        return True
+    # Temporarily returning True to avoid Render server crashing (Out of Memory)
+    # Loading MobileNetV2 alongside the 100MB VGG model exceeds 512MB RAM limits on Free tier.
+    return True
 
 def predict_image(img_path):
     img = cv2.imread(img_path)
