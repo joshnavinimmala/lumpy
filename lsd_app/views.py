@@ -77,15 +77,18 @@ from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, decode_predi
 model = None
 verifier_model = None
 
-def get_model():
-    global model
-    if model is None:
-        model_path = os.path.join(settings.BASE_DIR, 'model.h5')
-        if os.path.exists(model_path):
-            model = load_model(model_path)
-        else:
-            raise FileNotFoundError(f"Model file not found at {model_path}")
-    return model
+tflite_interpreter = None
+
+def get_tflite_interpreter():
+    global tflite_interpreter
+    if tflite_interpreter is None:
+        import tensorflow as tf
+        model_path = os.path.join(settings.BASE_DIR, 'model.tflite')
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"TFLite model not found at {model_path}")
+        tflite_interpreter = tf.lite.Interpreter(model_path=model_path)
+        tflite_interpreter.allocate_tensors()
+    return tflite_interpreter
 
 def get_verifier():
     global verifier_model
@@ -160,7 +163,15 @@ def predict_image(img_path):
     img = cv2.imread(img_path)
     img = cv2.resize(img, (224, 224))
     img = preprocess_input(np.expand_dims(img, axis=0))
-    preds = get_model().predict(img)
+    img = img.astype(np.float32)
+
+    interpreter = get_tflite_interpreter()
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+
+    interpreter.set_tensor(input_details[0]['index'], img)
+    interpreter.invoke()
+    preds = interpreter.get_tensor(output_details[0]['index'])
     return preds[0], CLASS_NAMES[np.argmax(preds)]
 
 
