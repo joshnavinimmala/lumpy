@@ -90,11 +90,18 @@ def get_tflite_interpreter():
         tflite_interpreter.allocate_tensors()
     return tflite_interpreter
 
-def get_verifier():
-    global verifier_model
-    if verifier_model is None:
-        verifier_model = MobileNetV2(weights='imagenet')
-    return verifier_model
+mobilenet_interpreter = None
+
+def get_mobilenet_interpreter():
+    global mobilenet_interpreter
+    if mobilenet_interpreter is None:
+        import tensorflow as tf
+        model_path = os.path.join(settings.BASE_DIR, 'mobilenet.tflite')
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"TFLite model not found at {model_path}")
+        mobilenet_interpreter = tf.lite.Interpreter(model_path=model_path)
+        mobilenet_interpreter.allocate_tensors()
+    return mobilenet_interpreter
 
 CATTLE_KEYWORDS = [
     'ox', 'bull', 'cow', 'water_buffalo', 'bison', 'bovine', 'calf'
@@ -155,9 +162,30 @@ plt.savefig(os.path.join(settings.BASE_DIR, 'static', 'plots', 'class_distributi
 plt.close()
 
 def verify_is_cattle(img_path):
-    # Temporarily returning True to avoid Render server crashing (Out of Memory)
-    # Loading MobileNetV2 alongside the 100MB VGG model exceeds 512MB RAM limits on Free tier.
-    return True
+    try:
+        from tensorflow.keras.applications.mobilenet_v2 import decode_predictions, preprocess_input as mobilenet_preprocess
+        img = cv2.imread(img_path)
+        img = cv2.resize(img, (224, 224))
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img_array = np.expand_dims(img, axis=0)
+        img_array = mobilenet_preprocess(img_array)
+        img_array = img_array.astype(np.float32)
+        
+        interpreter = get_mobilenet_interpreter()
+        interpreter.set_tensor(interpreter.get_input_details()[0]['index'], img_array)
+        interpreter.invoke()
+        preds = interpreter.get_tensor(interpreter.get_output_details()[0]['index'])
+
+        decoded = decode_predictions(preds, top=5)[0]
+        
+        for _, label, _ in decoded:
+            label = label.lower()
+            if any(keyword in label for keyword in CATTLE_KEYWORDS):
+                return True
+        return False
+    except Exception as e:
+        print(f"Error in verification: {e}")
+        return True
 
 def predict_image(img_path):
     img = cv2.imread(img_path)
